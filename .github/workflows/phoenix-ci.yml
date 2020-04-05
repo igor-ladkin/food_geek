@@ -10,6 +10,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      MIX_ENV: test
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     services:
       postgres:
         image: postgres:12-alpine
@@ -41,5 +45,5 @@ jobs:
       - name: Install JavaScript Dependencies
         run: cd assets && npm install
 
-      - name: Run Tests
-        run: mix test
+      - name: Run Tests and Upload Coverage
+        run: mix coveralls.github
