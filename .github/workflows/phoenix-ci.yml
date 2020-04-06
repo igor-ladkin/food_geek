@@ -1,0 +1,49 @@
+name: Phoenix CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      MIX_ENV: test
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    services:
+      postgres:
+        image: postgres:12-alpine
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-elixir@v1
+        with:
+          otp-version: 22.3
+          elixir-version: 1.10.2
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      - name: Install Elixir Dependencies
+        run: mix deps.get
+
+      - name: Install JavaScript Dependencies
+        run: cd assets && npm install
+
+      - name: Run Tests and Upload Coverage
+        run: mix coveralls.github
