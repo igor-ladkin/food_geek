@@ -5,20 +5,17 @@ html[lang="en"]
     meta[http-equiv="X-UA-Compatible" content="IE=edge"]
     meta[name="viewport" content="width=device-width, initial-scale=1.0"]
 
-    title= assigns[:page_title] || "FoodGeek · Phoenix Framework"
+    title= assigns[:page_title] || "FoodGeek"
 
     link[rel="stylesheet" href="#{ Routes.static_path(@conn, "/css/app.css") }"]
+
+    script[src="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/js/uikit.min.js"]
+    script[src="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/js/uikit-icons.min.js"]
+
     = csrf_meta_tag()
 
   body
-    header
-      section.container
-        nav[role="navigation"]
-          ul
-            li: a[href="https://hexdocs.pm/phoenix/overview.html"] Get Started
-
-        a.phx-logo[href="https://phoenixframework.org/"]
-          img[src="#{ Routes.static_path(@conn, "/images/phoenix.png") }" alt="Phoenix Framework Logo"]
+    = render "navbar.html", assigns
 
     main.container[role="main"]
       p.alert.alert-info[role="alert"]= get_flash(@conn, :info)
