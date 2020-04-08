@@ -7,6 +7,8 @@ html[lang="en"]
 
     title= assigns[:page_title] || "FoodGeek"
 
+    link[rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600&display=swap"]
+    link[rel="stylesheet" href="https://fonts.googleapis.com/css?family=Leckerli+One&display=swap"]
     link[rel="stylesheet" href="#{ Routes.static_path(@conn, "/css/app.css") }"]
 
     script[src="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/js/uikit.min.js"]
