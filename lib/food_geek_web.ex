@@ -40,6 +40,7 @@ defmodule FoodGeekWeb do
       use Phoenix.HTML
 
       import FoodGeekWeb.ErrorHelpers
+      import FoodGeekWeb.RenderHelpers
       import FoodGeekWeb.Gettext
       alias FoodGeekWeb.Router.Helpers, as: Routes
     end
