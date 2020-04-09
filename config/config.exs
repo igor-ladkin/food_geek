@@ -17,6 +17,10 @@ config :food_geek, FoodGeekWeb.Endpoint,
   pubsub: [name: FoodGeek.PubSub, adapter: Phoenix.PubSub.PG2],
   live_view: [signing_salt: "2zbjpOFh"]
 
+config :food_geek, FoodGeekWeb.Gettext,
+  locales: ~w(en ru),
+  default_locale: "en"
+
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]

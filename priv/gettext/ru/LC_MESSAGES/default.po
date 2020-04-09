@@ -1,0 +1,44 @@
+## "msgid"s in this file come from POT (.pot) files.
+##
+## Do not add, change, or remove "msgid"s manually here as
+## they're tied to the ones in the corresponding POT file
+## (with the same domain).
+##
+## Use "mix gettext.extract --merge" or "mix gettext.merge"
+## to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: ru\n"
+"Plural-Forms: nplurals=3\n"
+
+#, elixir-format
+#: lib/food_geek_web/templates/page/terms.html.slime:1
+msgid ""
+"**Welcome to FoodGeek!**\n\n"
+"These terms and conditions outline the rules and regulations for the use of [FoodGeek LTD's Website](https://foodgeek.com).\n"
+"By accessing this website we assume you accept these terms and conditions.\n"
+"Do not continue to use FoodGeek if you do not agree to take all of the terms and conditions stated on this page.\n\n"
+"### Cookies\n\n"
+"We employ the use of cookies. By accessing FoodGeek, you agreed to use cookies in agreement with the FoodGeek LTD's Privacy Policy.\n"
+"Most interactive websites use cookies to let us retrieve the user’s details for each visit.\n"
+"Cookies are used by our website to enable the functionality of certain areas to make it easier for people visiting our website.\n"
+"Some of our affiliate/advertising partners may also use cookies.\n\n"
+"### License\n\n"
+"FoodGeek is a learning project and should not be used for any profit.\n"
+msgstr ""
+"**Добро пожаловать в FoodGeek!**\n\n"
+"Настоящие правила и условия описывают правила и положения использования веб-сайта [FoodGeek LTD](https://foodgeeks.com).\n"
+"Заходя на этот сайт, мы предполагаем, что вы принимаете эти условия и положения.\n"
+"Не продолжайте использовать Food Geek, если вы не согласны принять все условия и положения, изложенные на этой странице.\n\n"
+"### Cookies\n\n"
+"Мы используем файлы cookie. Получая доступ к FoodGeek, вы соглашаетесь использовать файлы cookie в соответствии с политикой конфиденциальности FoodGeek LTD.\n"
+"Большинство интерактивных веб-сайтов используют файлы cookie, чтобы мы могли получать данные пользователя для каждого посещения.\n"
+"Файлы cookie используются нашим веб-сайтом для обеспечения функциональности определенных областей, чтобы облегчить людям, посещающим наш веб-сайт.\n"
+"Некоторые из наших партнерских / рекламных партнеров также могут использовать файлы cookie.\n\n"
+"### Лицензия\n\n"
+"Food Geek - это учебный проект, и он не должен использоваться для получения какой-либо прибыли.\n"
+
+#, elixir-format
+#: lib/food_geek_web/templates/page/terms.html.slime:1
+msgid "Terms and Conditions"
+msgstr "Условия и положения"

@@ -1,0 +1,33 @@
+## "msgid"s in this file come from POT (.pot) files.
+##
+## Do not add, change, or remove "msgid"s manually here as
+## they're tied to the ones in the corresponding POT file
+## (with the same domain).
+##
+## Use "mix gettext.extract --merge" or "mix gettext.merge"
+## to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: en\n"
+"Plural-Forms: nplurals=2\n"
+
+#, elixir-format
+#: lib/food_geek_web/templates/page/terms.html.slime:1
+msgid ""
+"**Welcome to FoodGeek!**\n\n"
+"These terms and conditions outline the rules and regulations for the use of [FoodGeek LTD's Website](https://foodgeek.com).\n"
+"By accessing this website we assume you accept these terms and conditions.\n"
+"Do not continue to use FoodGeek if you do not agree to take all of the terms and conditions stated on this page.\n\n"
+"### Cookies\n\n"
+"We employ the use of cookies. By accessing FoodGeek, you agreed to use cookies in agreement with the FoodGeek LTD's Privacy Policy.\n"
+"Most interactive websites use cookies to let us retrieve the user’s details for each visit.\n"
+"Cookies are used by our website to enable the functionality of certain areas to make it easier for people visiting our website.\n"
+"Some of our affiliate/advertising partners may also use cookies.\n\n"
+"### License\n\n"
+"FoodGeek is a learning project and should not be used for any profit.\n"
+msgstr ""
+
+#, elixir-format
+#: lib/food_geek_web/templates/page/terms.html.slime:1
+msgid "Terms and Conditions"
+msgstr ""
