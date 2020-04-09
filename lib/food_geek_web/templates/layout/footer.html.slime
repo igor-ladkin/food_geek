@@ -1,0 +1,36 @@
+footer.uk-section.uk-section-default
+  .uk-container.uk-text-secondary.uk-text-500
+    div[class="uk-child-width-1-2@s" data-uk-grid]
+      div: a.uk-logo[href="#"] FoodGeek
+
+      .uk-flex.uk-flex-middle[class="uk-flex-right@s"]
+        .uk-child-width-auto.uk-grid-small[data-uk-grid]
+          div
+            a.uk-icon-button.facebook[href="https://www.facebook.com/" data-uk-icon="icon: facebook; ratio: 0.8" target="_blank"]
+          div
+            a.uk-icon-button.instagram[href="https://www.instagram.com/" data-uk-icon="icon: instagram; ratio: 0.8" target="_blank"]
+          div
+            a.uk-icon-button.twitter[href="https://www.twitter.com/" data-uk-icon="icon: twitter; ratio: 0.8" target="_blank"]
+
+    div[class="uk-child-width-1-2@s uk-child-width-1-4@m" data-uk-grid]
+      ul.uk-list.uk-text-small
+        li: a.uk-link-text[href="#"] Recipes
+        li: a.uk-link-text[href="#"] Stores
+
+      ul.uk-list.uk-text-small
+        li: a.uk-link-text[href="#"] Chefs
+        li: a.uk-link-text[href="#"] Workshops
+
+      ul.uk-list.uk-text-small
+        li: a.uk-link-text[href="#"] Terms
+
+      ul.uk-list.uk-text-small
+        li: a.uk-link-text[href="#"] Contact
+        li: a.uk-link-text[href="#"] About Us
+
+    .uk-margin-medium-top.uk-text-small.uk-text-center.uk-text-muted
+      div
+        | Made by
+        a.uk-link-muted[href="https://github.com/thrasherDGK/" target="_blank"]
+          |  thrasherDGK
+        |  in isolation from home.

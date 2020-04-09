@@ -25,4 +25,7 @@ html[lang="en"]
 
       = render @view_module, @view_template, assigns
 
+    = render "footer.html", assigns
+    = render "nav_mobile.html", assigns
+
     script[type="text/javascript" src="#{ Routes.static_path(@conn, "/js/app.js") }"]

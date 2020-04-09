@@ -1,0 +1,22 @@
+#offcanvas[data-uk-offcanvas="flip: true; overlay: true"]
+  .uk-offcanvas-bar
+    a.uk-logo[href="/"] FoodGeek
+
+    button.uk-offcanvas-close[type="button" data-uk-close="ratio: 1.2"]
+
+    ul.uk-nav.uk-nav-primary.uk-nav-offcanvas.uk-margin-medium-top.uk-text-center
+      li: a[href="/"] Home
+      li: a[href="/"] Contact
+      li: a[href="/"] Sign In
+
+    .uk-margin-medium-top
+      a.uk-button.uk-width-1-1.uk-button-primary[href="/"] Sign Up
+
+    .uk-margin-medium-top.uk-text-center
+      .uk-child-width-auto.uk-grid-small.uk-flex-center[data-uk-grid]
+        div
+          a.uk-icon-link[href="https://www.facebook.com/" data-uk-icon="icon: facebook" target="_blank"]
+        div
+          a.uk-icon-link[href="https://www.instagram.com/" data-uk-icon="icon: instagram" target="_blank"]
+        div
+          a.uk-icon-link[href="https://twitter.com/" data-uk-icon="icon: twitter" target="_blank"]

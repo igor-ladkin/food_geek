@@ -1,7 +1,7 @@
 defmodule FoodGeekWeb.PageController do
   use FoodGeekWeb, :controller
 
-  def index(conn, _params) do
-    render(conn, "index.html")
+  def contact(conn, _params) do
+    render(conn, "contact.html")
   end
 end
