@@ -28,4 +28,8 @@ config :phoenix, :template_engines,
   slime: PhoenixSlime.Engine,
   slimleex: PhoenixSlime.LiveViewEngine
 
+config :slime, :embedded_engines, %{
+  markdown: FoodGeekWeb.MarkdownEngine
+}
+
 import_config "#{Mix.env()}.exs"
