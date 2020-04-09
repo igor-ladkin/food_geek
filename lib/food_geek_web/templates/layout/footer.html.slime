@@ -22,7 +22,7 @@ footer.uk-section.uk-section-default
         li: a.uk-link-text[href="#"] Workshops
 
       ul.uk-list.uk-text-small
-        li: a.uk-link-text[href="#"] Terms
+        li: a.uk-link-text[href="/terms"] Terms
 
       ul.uk-list.uk-text-small
         li: a.uk-link-text[href="#"] Contact

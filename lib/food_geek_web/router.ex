@@ -17,6 +17,7 @@ defmodule FoodGeekWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :contact
+    get "/terms", PageController, :terms
   end
 
   # Other scopes may use custom stacks.
