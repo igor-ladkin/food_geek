@@ -349,6 +349,14 @@
   }
 }
 
+@mixin hook-drop-misc() {
+  @media (max-width: $breakpoint-small) {
+    .uk-drop {
+      width: 35vw;
+    }
+  }
+}
+
 @mixin hook-utility-misc() {
   .uk-header-overlay {
     background: linear-gradient(

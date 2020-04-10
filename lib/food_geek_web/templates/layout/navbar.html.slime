@@ -10,7 +10,7 @@ nav.uk-navbar-container.uk-letter-spacing-small
       .uk-navbar-right
         div
           a.uk-navbar-toggle[data-uk-search-icon href="#"]
-          .uk-drop.uk-background-default[data-uk-drop="mode: click; pos: left-center; offset: 0"]
+          .uk-drop.uk-background-default[data-uk-drop="mode: click; pos: right-center; offset: 0, flip: false, boundary-align: true"]
             form.uk-search.uk-search-navbar.uk-width-1-1
               input.uk-search-input.uk-text-demi-bold[type="search" placeholder="Search..." autofocus]
 
