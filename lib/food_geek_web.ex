@@ -54,6 +54,15 @@ defmodule FoodGeekWeb do
     end
   end
 
+  def plug do
+    quote do
+      import Plug.Conn
+      import Phoenix.Controller
+      import FoodGeekWeb.Gettext
+      alias FoodGeekWeb.Router.Helpers, as: Routes
+    end
+  end
+
   def channel do
     quote do
       use Phoenix.Channel

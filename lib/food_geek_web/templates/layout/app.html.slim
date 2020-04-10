@@ -20,8 +20,7 @@ html[lang="en"]
     = render "navbar.html", assigns
 
     main.container[role="main"]
-      p.alert.alert-info[role="alert"]= get_flash(@conn, :info)
-      p.alert.alert-danger[role="alert"]= get_flash(@conn, :error)
+      = render "alerts.html", assigns
 
       = render @view_module, @view_template, assigns
 

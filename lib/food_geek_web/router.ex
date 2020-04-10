@@ -14,6 +14,10 @@ defmodule FoodGeekWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :authenticate_user do
+    plug FoodGeekWeb.AuthPlug
+  end
+
   scope "/", FoodGeekWeb do
     pipe_through :browser
 
@@ -25,6 +29,14 @@ defmodule FoodGeekWeb.Router do
 
     get "/", PageController, :contact
     get "/terms", PageController, :terms
+  end
+
+  scope "/:locale/my", FoodGeekWeb, as: :my do
+    pipe_through [:browser, :authenticate_user]
+
+    resources "/profile", ProfileController,
+      only: [:show],
+      singleton: true
   end
 
   # Other scopes may use custom stacks.
