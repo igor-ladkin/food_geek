@@ -7,6 +7,7 @@ defmodule FoodGeekWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug SetLocale, gettext: FoodGeekWeb.Gettext, default_locale: "en"
   end
 
   pipeline :api do
@@ -14,6 +15,12 @@ defmodule FoodGeekWeb.Router do
   end
 
   scope "/", FoodGeekWeb do
+    pipe_through :browser
+
+    get "/", PageController, :contact
+  end
+
+  scope "/:locale", FoodGeekWeb do
     pipe_through :browser
 
     get "/", PageController, :contact
