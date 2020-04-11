@@ -28,7 +28,7 @@ defmodule FoodGeek.MixProject do
   def application do
     [
       mod: {FoodGeek.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :set_locale]
     ]
   end
 
@@ -47,9 +47,12 @@ defmodule FoodGeek.MixProject do
       {:ecto_sql, "~> 3.1"},
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 2.11"},
+      {:phoenix_slime, "~> 0.13.1"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
+      {:set_locale, "~> 0.2.1"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
+      {:earmark, "~> 1.4.3"},
       {:plug_cowboy, "~> 2.0"},
       {:excoveralls, "~> 0.10", only: :test}
     ]

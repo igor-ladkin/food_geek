@@ -1,0 +1,44 @@
+## "msgid"s in this file come from POT (.pot) files.
+##
+## Do not add, change, or remove "msgid"s manually here as
+## they're tied to the ones in the corresponding POT file
+## (with the same domain).
+##
+## Use "mix gettext.extract --merge" or "mix gettext.merge"
+## to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: ru\n"
+"Plural-Forms: nplurals=3\n"
+
+#, elixir-format
+#: lib/food_geek_web/templates/page/terms.html.slim:6
+msgid "Cookies"
+msgstr "Cookies"
+
+#, elixir-format
+#: lib/food_geek_web/templates/page/terms.html.slim:12
+msgid "FoodGeek is a learning project and should not be used for any profit.\n"
+msgstr "Food Geek - это учебный проект, и он не должен использоваться для получения какой-либо прибыли.\n"
+
+#, elixir-format
+#: lib/food_geek_web/templates/page/terms.html.slim:12
+msgid "License"
+msgstr "Лицензия"
+
+#, elixir-format
+#: lib/food_geek_web/templates/page/terms.html.slim:1
+msgid "These terms and conditions outline the rules and regulations for the use of FoodGeek LTD's Website.\nBy accessing this website we assume you accept these terms and conditions.\nDo not continue to use FoodGeek if you do not agree to take all of the terms and conditions stated on this page.\n"
+msgstr ""
+"Настоящие правила и условия описывают правила и положения использования веб-сайта [FoodGeek LTD](https://foodgeeks.com).\n"
+"Заходя на этот сайт, мы предполагаем, что вы принимаете эти условия и положения.\n"
+"Не продолжайте использовать Food Geek, если вы не согласны принять все условия и положения, изложенные на этой странице.\n\n"
+
+#, elixir-format
+#: lib/food_geek_web/templates/page/terms.html.slim:6
+msgid "We employ the use of cookies. By accessing FoodGeek, you agreed to use cookies in agreement with the FoodGeek LTD's Privacy Policy.\nMost interactive websites use cookies to let us retrieve the user’s details for each visit.\nCookies are used by our website to enable the functionality of certain areas to make it easier for people visiting our website.\nSome of our affiliate/advertising partners may also use cookies.\n"
+msgstr ""
+"Мы используем файлы cookie. Получая доступ к FoodGeek, вы соглашаетесь использовать файлы cookie в соответствии с политикой конфиденциальности FoodGeek LTD.\n"
+"Большинство интерактивных веб-сайтов используют файлы cookie, чтобы мы могли получать данные пользователя для каждого посещения.\n"
+"Файлы cookie используются нашим веб-сайтом для обеспечения функциональности определенных областей, чтобы облегчить людям, посещающим наш веб-сайт.\n"
+"Некоторые из наших партнерских / рекламных партнеров также могут использовать файлы cookie.\n\n"

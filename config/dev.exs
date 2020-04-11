@@ -61,7 +61,7 @@ config :food_geek, FoodGeekWeb.Endpoint,
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
       ~r"lib/food_geek_web/(live|views)/.*(ex)$",
-      ~r"lib/food_geek_web/templates/.*(eex)$"
+      ~r"lib/food_geek_web/templates/.*(eex|slim|slime)$"
     ]
   ]
 

@@ -10,7 +10,6 @@ use Mix.Config
 config :food_geek,
   ecto_repos: [FoodGeek.Repo]
 
-# Configures the endpoint
 config :food_geek, FoodGeekWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "7byhVtsUzB/wKWduEqtTuvYafg5npCj3PeeUfk1mJUqqcd1wnY1gHnpRubu4ovsn",
@@ -18,14 +17,23 @@ config :food_geek, FoodGeekWeb.Endpoint,
   pubsub: [name: FoodGeek.PubSub, adapter: Phoenix.PubSub.PG2],
   live_view: [signing_salt: "2zbjpOFh"]
 
-# Configures Elixir's Logger
+config :food_geek, FoodGeekWeb.Gettext,
+  locales: ~w(en ru),
+  default_locale: "en"
+
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
-# Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
-# Import environment specific config. This must remain at the bottom
-# of this file so it overrides the configuration defined above.
+config :phoenix, :template_engines,
+  slim: PhoenixSlime.Engine,
+  slime: PhoenixSlime.Engine,
+  slimleex: PhoenixSlime.LiveViewEngine
+
+config :slime, :embedded_engines, %{
+  markdown: FoodGeekWeb.MarkdownEngine
+}
+
 import_config "#{Mix.env()}.exs"
