@@ -5,22 +5,22 @@
         h1.uk-margin-bottom
           = gettext("Terms and Conditions")
 
-        eex:
-          <%= markdown gettext("""
-          **Welcome to FoodGeek!**
-
-          These terms and conditions outline the rules and regulations for the use of [FoodGeek LTD's Website](https://foodgeek.com).
+        strong= gettext("Welcome to FoodGeek!")
+        p: eex <%= dgettext("legal", """
+          These terms and conditions outline the rules and regulations for the use of FoodGeek LTD's Website.
           By accessing this website we assume you accept these terms and conditions.
           Do not continue to use FoodGeek if you do not agree to take all of the terms and conditions stated on this page.
+          """) %>
 
-          ### Cookies
-
+        h3= dgettext("legal", "Cookies")
+        p: eex <%= dgettext("legal", """
           We employ the use of cookies. By accessing FoodGeek, you agreed to use cookies in agreement with the FoodGeek LTD's Privacy Policy.
           Most interactive websites use cookies to let us retrieve the user’s details for each visit.
           Cookies are used by our website to enable the functionality of certain areas to make it easier for people visiting our website.
           Some of our affiliate/advertising partners may also use cookies.
+          """) %>
 
-          ### License
-
+        h3= dgettext("legal", "License")
+        p: eex <%= dgettext("legal", """
           FoodGeek is a learning project and should not be used for any profit.
           """) %>
