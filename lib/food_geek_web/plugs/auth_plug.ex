@@ -6,7 +6,7 @@ defmodule FoodGeekWeb.AuthPlug do
   end
 
   def call(conn, _opts) do
-    if get_session(conn, :user) do
+    if conn.assigns[:current_user] do
       conn
     else
       conn

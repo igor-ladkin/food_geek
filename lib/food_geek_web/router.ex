@@ -7,6 +7,8 @@ defmodule FoodGeekWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+
+    plug FoodGeekWeb.SetCurrentUserPlug
     plug SetLocale, gettext: FoodGeekWeb.Gettext, default_locale: "en"
   end
 
