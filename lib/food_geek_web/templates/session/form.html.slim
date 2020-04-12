@@ -1,0 +1,21 @@
+= form_for :user, Routes.session_path(@conn, :new, @locale), [class: "uk-text-center"], fn f ->
+  .uk-width-1-1.uk-margin
+    = label f, :email, gettext("Email"), class: "uk-form-label"
+    = text_input f, :email,
+      class: "uk-input uk-form-large uk-border-pill uk-text-center",
+      type: "email",
+      placeholder: "tom@company.com"
+
+  .uk-width-1-1.uk-margin
+    = label f, :password, gettext("Password"), class: "uk-form-label"
+    = text_input f, :password,
+      class: "uk-input uk-form-large uk-border-pill uk-text-center",
+      type: "password",
+      placeholder: gettext("Min 4 characters")
+
+  .uk-width-1-1.uk-margin.uk-text-center
+    a.uk-text-small.uk-link-muted[href="#"]= gettext("Forgot your password?")
+
+  .uk-width-1-1.uk-text-center
+    = submit gettext("Sign In"),
+      class: "uk-button uk-button-primary uk-button-large"

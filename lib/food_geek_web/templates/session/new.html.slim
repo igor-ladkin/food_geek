@@ -21,18 +21,7 @@
         p.uk-margin-remove
           = gettext("Or use your email account:")
 
-      form.uk-text-center
-        .uk-width-1-1.uk-margin
-          label.uk-form-label[for="email"]= gettext("Email")
-          input#email.uk-input.uk-form-large.uk-border-pill.uk-text-center[type="email" placeholder="tom@company.com"]
-        .uk-width-1-1.uk-margin
-          label.uk-form-label[for="password"]= gettext("Password")
-          input#password.uk-input.uk-form-large.uk-border-pill.uk-text-center[type="password" placeholder="Min 4 characters"]
-        .uk-width-1-1.uk-margin.uk-text-center
-          a.uk-text-small.uk-link-muted[href="#"]= gettext("Forgot your password?")
-        .uk-width-1-1.uk-text-center
-          button.uk-button.uk-button-primary.uk-button-large
-            = gettext("Sign In")
+      = render "form.html", conn: @conn, locale: @locale
 
   .uk-padding-large.uk-flex.uk-flex-middle.uk-flex-center.uk-light[class="uk-width-1-2@m" data-uk-height-viewport]
     .uk-background-cover.uk-background-norepeat.uk-background-blend-overlay.uk-background-overlay.uk-border-rounded-large.uk-width-1-1.uk-height-xlarge.uk-flex.uk-flex-middle.uk-flex-center[style="background-image: url(https://source.unsplash.com/KPDbRyFOTnE/600x700);"]

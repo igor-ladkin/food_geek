@@ -31,6 +31,7 @@ defmodule FoodGeekWeb.Router do
     get "/terms", PageController, :terms
 
     get "/sign-in", SessionController, :new
+    post "/sign-in", SessionController, :create
   end
 
   scope "/:locale/my", FoodGeekWeb, as: :my do

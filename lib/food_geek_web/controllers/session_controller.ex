@@ -6,4 +6,12 @@ defmodule FoodGeekWeb.SessionController do
   def new(conn, _params) do
     render(conn, "new.html")
   end
+
+  def create(conn, %{"user" => %{"email" => email}}) do
+    if email do
+      conn
+      |> put_session(:user, email)
+      |> redirect(to: "/")
+    end
+  end
 end
