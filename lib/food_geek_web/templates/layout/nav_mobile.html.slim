@@ -7,7 +7,9 @@
     ul.uk-nav.uk-nav-primary.uk-nav-offcanvas.uk-margin-medium-top.uk-text-center
       li: a[href="/"] Home
       li: a[href="/"] Contact
-      li: a[href="/sign-in"] Sign In
+      li
+        = link gettext("Sign In"),
+          to: Routes.session_path(@conn, :new, @locale)
 
     .uk-margin-medium-top
       a.uk-button.uk-width-1-1.uk-button-primary[href="/"] Sign Up

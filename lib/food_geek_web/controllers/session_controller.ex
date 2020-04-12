@@ -14,4 +14,10 @@ defmodule FoodGeekWeb.SessionController do
       |> redirect(to: "/")
     end
   end
+
+  def delete(conn, _params) do
+    conn
+    |> configure_session(drop: true)
+    |> redirect(to: "/")
+  end
 end
