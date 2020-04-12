@@ -30,7 +30,7 @@ msgstr "Лицензия"
 #: lib/food_geek_web/templates/page/terms.html.slim:1
 msgid "These terms and conditions outline the rules and regulations for the use of FoodGeek LTD's Website.\nBy accessing this website we assume you accept these terms and conditions.\nDo not continue to use FoodGeek if you do not agree to take all of the terms and conditions stated on this page.\n"
 msgstr ""
-"Настоящие правила и условия описывают правила и положения использования веб-сайта [FoodGeek LTD](https://foodgeeks.com).\n"
+"Настоящие правила и условия описывают правила и положения использования веб-сайта FoodGeek LTD.\n"
 "Заходя на этот сайт, мы предполагаем, что вы принимаете эти условия и положения.\n"
 "Не продолжайте использовать Food Geek, если вы не согласны принять все условия и положения, изложенные на этой странице.\n\n"
 
