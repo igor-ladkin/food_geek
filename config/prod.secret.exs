@@ -30,6 +30,25 @@ config :food_geek, FoodGeekWeb.Endpoint,
   ],
   secret_key_base: secret_key_base
 
+basic_auth_username =
+  System.get_env("BASIC_AUTH_USERNAME") ||
+    raise """
+    environment variable BASIC_AUTH_USERNAME is missing.
+    """
+
+basic_auth_password =
+  System.get_env("BASIC_AUTH_PASSWORD") ||
+    raise """
+    environment variable BASIC_AUTH_PASSWORD is missing.
+    """
+
+config :food_geek,
+  auth_config: [
+    username: basic_auth_username,
+    password: basic_auth_password,
+    realm: "Website"
+  ]
+
 # ## Using releases (Elixir v1.9+)
 #
 # If you are doing OTP releases, you need to instruct Phoenix

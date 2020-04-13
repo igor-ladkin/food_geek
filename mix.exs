@@ -54,6 +54,7 @@ defmodule FoodGeek.MixProject do
       {:jason, "~> 1.0"},
       {:earmark, "~> 1.4.3"},
       {:plug_cowboy, "~> 2.0"},
+      {:basic_auth, "~> 2.2.2"},
       {:excoveralls, "~> 0.10", only: :test}
     ]
   end

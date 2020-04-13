@@ -35,6 +35,14 @@ defmodule FoodGeekWeb.ConnCase do
       Ecto.Adapters.SQL.Sandbox.mode(FoodGeek.Repo, {:shared, self()})
     end
 
-    {:ok, conn: Phoenix.ConnTest.build_conn()}
+    username = Application.get_env(:food_geek, :auth_config)[:username]
+    password = Application.get_env(:food_geek, :auth_config)[:password]
+    authorization = "Basic " <> Base.encode64("#{username}:#{password}")
+
+    conn =
+      Phoenix.ConnTest.build_conn()
+      |> Plug.Conn.put_req_header("authorization", authorization)
+
+    {:ok, conn: conn}
   end
 end

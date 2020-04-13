@@ -8,6 +8,8 @@ defmodule FoodGeekWeb.Router do
     plug :protect_from_forgery
     plug :put_secure_browser_headers
 
+    plug BasicAuth, use_config: {:food_geek, :auth_config}
+
     plug FoodGeekWeb.SetCurrentUserPlug
     plug SetLocale, gettext: FoodGeekWeb.Gettext, default_locale: "en"
   end
