@@ -11,12 +11,16 @@ defmodule FoodGeekWeb.SetCurrentUserPlug do
         conn
 
       email = get_session(conn, :user) ->
-        conn
-        |> assign(:current_user, %{email: email})
-        |> configure_session(renew: true)
+        set_current_user(conn, %{email: email})
 
       true ->
         conn
     end
+  end
+
+  defp set_current_user(conn, user) do
+    conn
+    |> assign(:current_user, user)
+    |> configure_session(renew: true)
   end
 end
