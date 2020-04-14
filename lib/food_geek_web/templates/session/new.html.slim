@@ -1,0 +1,37 @@
+.uk-grid-collapse[data-uk-grid]
+  .uk-padding-large.uk-flex.uk-flex-middle.uk-flex-center[class="uk-width-1-2@m" data-uk-height-viewport]
+    div[class="uk-width-3-4@s"]
+      .uk-text-center.uk-margin-bottom
+        a.uk-logo.uk-text-primary.uk-text-bold[href="index.html"]
+          | FoodGeek
+
+      .uk-text-center.uk-margin-medium-bottom
+        h1.uk-h2.uk-letter-spacing-small
+          = gettext("Sign In to FoodGeek")
+
+      .uk-child-width-auto.uk-grid-small.uk-flex.uk-flex-center.uk-margin[data-uk-grid]
+        div
+          a.uk-icon-button.uk-icon-button-large.facebook[href="#" data-uk-icon="icon: facebook"]
+        div
+          a.uk-icon-button.uk-icon-button-large.google[href="#" data-uk-icon="icon: google"]
+        div
+          a.uk-icon-button.uk-icon-button-large.linkedin[href="#" data-uk-icon="icon: linkedin"]
+
+      .uk-text-center.uk-margin
+        p.uk-margin-remove
+          = gettext("Or use your email account:")
+
+      = render "form.html", conn: @conn, locale: @locale
+
+  .uk-padding-large.uk-flex.uk-flex-middle.uk-flex-center.uk-light[class="uk-width-1-2@m" data-uk-height-viewport]
+    .uk-background-cover.uk-background-norepeat.uk-background-blend-overlay.uk-background-overlay.uk-border-rounded-large.uk-width-1-1.uk-height-xlarge.uk-flex.uk-flex-middle.uk-flex-center[style="background-image: url(https://source.unsplash.com/KPDbRyFOTnE/600x700);"]
+      .uk-padding-large
+        .uk-text-center
+          h2.uk-letter-spacing-small
+            = gettext("Hello There, Join Us")
+
+        .uk-margin-top.uk-margin-medium-bottom.uk-text-center
+          p= gettext("Enter your personal details and join the cooking community")
+
+        .uk-width-1-1.uk-text-center
+          a.uk-button.uk-button-primary.uk-button-large[href="/sign-up"]= gettext("Sign Up")

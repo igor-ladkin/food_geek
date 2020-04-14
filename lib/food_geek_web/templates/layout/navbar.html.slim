@@ -12,13 +12,31 @@ nav.uk-navbar-container.uk-letter-spacing-small
           a.uk-navbar-toggle[data-uk-search-icon href="#"]
           .uk-drop.uk-background-default[data-uk-drop="mode: click; pos: right-center; offset: 0, flip: false, boundary-align: true"]
             form.uk-search.uk-search-navbar.uk-width-1-1
-              input.uk-search-input.uk-text-demi-bold[type="search" placeholder="Search..." autofocus]
+              input.uk-search-input.uk-text-demi-bold[type="search" placeholder=gettext("Search...") autofocus]
 
-        ul.uk-navbar-nav[class="uk-visible@m"]
-          li: a[href="/"] Sign In
+        = if @conn.assigns[:current_user] do
+          ul.uk-navbar-nav[class="uk-visible@m"]
+            li
+              = link @current_user.email,
+                to: Routes.my_profile_path(@conn, :show, @locale)
 
-        .uk-navbar-item
-          a.uk-button.uk-button-primary[href="/"] Sign Up
+          .uk-navbar-item
+            = link gettext("Sign Out"),
+              to: Routes.session_path(@conn, :delete, @locale),
+              class: "uk-button uk-button-default",
+              method: :delete
+
+
+        - else
+          ul.uk-navbar-nav[class="uk-visible@m"]
+            li
+              = link gettext("Sign In"),
+                to: Routes.session_path(@conn, :new, @locale)
+
+          .uk-navbar-item
+            = link gettext("Sign Up"),
+              to: "/",
+              class: "uk-button uk-button-primary"
 
         a.uk-navbar-toggle.uk-icon[href="#offcanvas" class="uk-hidden@m" data-uk-toggle]
           span[data-uk-navbar-toggle-icon]

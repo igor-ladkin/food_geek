@@ -50,7 +50,17 @@ defmodule FoodGeekWeb do
     quote do
       use Phoenix.Router
       import Plug.Conn
+      import Plug.BasicAuth
       import Phoenix.Controller
+    end
+  end
+
+  def plug do
+    quote do
+      import Plug.Conn
+      import Phoenix.Controller
+      import FoodGeekWeb.Gettext
+      alias FoodGeekWeb.Router.Helpers, as: Routes
     end
   end
 

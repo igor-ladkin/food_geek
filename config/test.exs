@@ -14,5 +14,12 @@ config :food_geek, FoodGeekWeb.Endpoint,
   http: [port: 4002],
   server: false
 
+config :food_geek,
+  auth_config: [
+    username: "test",
+    password: "test",
+    realm: "Website"
+  ]
+
 # Print only warnings and errors during test
 config :logger, level: :warn

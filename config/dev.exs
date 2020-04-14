@@ -65,6 +65,13 @@ config :food_geek, FoodGeekWeb.Endpoint,
     ]
   ]
 
+config :food_geek,
+  auth_config: [
+    username: "user",
+    password: "password",
+    realm: "Website"
+  ]
+
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"
 

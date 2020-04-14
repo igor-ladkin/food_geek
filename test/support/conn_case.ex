@@ -17,6 +17,9 @@ defmodule FoodGeekWeb.ConnCase do
 
   use ExUnit.CaseTemplate
 
+  alias Plug.Conn
+  alias Plug.BasicAuth
+
   using do
     quote do
       # Import conveniences for testing with connections
@@ -35,6 +38,14 @@ defmodule FoodGeekWeb.ConnCase do
       Ecto.Adapters.SQL.Sandbox.mode(FoodGeek.Repo, {:shared, self()})
     end
 
-    {:ok, conn: Phoenix.ConnTest.build_conn()}
+    username = Application.get_env(:food_geek, :auth_config)[:username]
+    password = Application.get_env(:food_geek, :auth_config)[:password]
+    authorization = BasicAuth.encode_basic_auth(username, password)
+
+    conn =
+      Phoenix.ConnTest.build_conn()
+      |> Conn.put_req_header("authorization", authorization)
+
+    {:ok, conn: conn}
   end
 end
