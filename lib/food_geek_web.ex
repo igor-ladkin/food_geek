@@ -50,6 +50,7 @@ defmodule FoodGeekWeb do
     quote do
       use Phoenix.Router
       import Plug.Conn
+      import Plug.BasicAuth
       import Phoenix.Controller
     end
   end

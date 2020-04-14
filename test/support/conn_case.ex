@@ -17,6 +17,9 @@ defmodule FoodGeekWeb.ConnCase do
 
   use ExUnit.CaseTemplate
 
+  alias Plug.Conn
+  alias Plug.BasicAuth
+
   using do
     quote do
       # Import conveniences for testing with connections
@@ -37,11 +40,11 @@ defmodule FoodGeekWeb.ConnCase do
 
     username = Application.get_env(:food_geek, :auth_config)[:username]
     password = Application.get_env(:food_geek, :auth_config)[:password]
-    authorization = "Basic " <> Base.encode64("#{username}:#{password}")
+    authorization = BasicAuth.encode_basic_auth(username, password)
 
     conn =
       Phoenix.ConnTest.build_conn()
-      |> Plug.Conn.put_req_header("authorization", authorization)
+      |> Conn.put_req_header("authorization", authorization)
 
     {:ok, conn: conn}
   end
