@@ -31,6 +31,9 @@ defmodule FoodGeekWeb.Router do
     get "/sign-in", SessionController, :new
     post "/sign-in", SessionController, :create
     delete "/sign-out", SessionController, :delete
+
+    get "/sign-up", RegistrationController, :new
+    post "/sign-up", RegistrationController, :create
   end
 
   scope "/my", FoodGeekWeb, as: :my do

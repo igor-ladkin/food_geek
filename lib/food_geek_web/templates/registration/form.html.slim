@@ -1,0 +1,38 @@
+= form_for :user, Routes.registration_path(@conn, :create), [class: "uk-text-center"], fn f ->
+  .uk-width-1-1.uk-margin
+    = label f, :name, gettext("Full name"), class: "uk-form-label"
+    = text_input f, :name,
+      class: "uk-input uk-form-large uk-border-pill uk-text-center",
+      type: "text",
+      placeholder: "Tom Dale"
+
+  .uk-width-1-1.uk-margin
+    = label f, :email, gettext("Email"), class: "uk-form-label"
+    = text_input f, :email,
+      class: "uk-input uk-form-large uk-border-pill uk-text-center",
+      type: "email",
+      placeholder: "tom@company.com"
+
+  .uk-width-1-1.uk-margin
+    = label f, :password, gettext("Password"), class: "uk-form-label"
+    = text_input f, :password,
+      class: "uk-input uk-form-large uk-border-pill uk-text-center",
+      type: "password",
+      placeholder: gettext("Min 4 characters")
+
+  .uk-width-1-1.uk-margin
+    = label f, :password_confirmation, gettext("Password confirmation"), class: "uk-form-label"
+    = text_input f, :password_confirmation,
+      class: "uk-input uk-form-large uk-border-pill uk-text-center",
+      type: "password",
+      placeholder: gettext("Same as above")
+
+  .uk-width-1-1.uk-text-center
+    = submit gettext("Sign Up"),
+      class: "uk-button uk-button-primary uk-button-large"
+
+  .uk-width-1-1.uk-margin.uk-text-center
+    p.uk-text-small.uk-margin-remove
+      | By signing up you agree to our&nbsp;
+      = link gettext("terms"), to: Routes.page_path(@conn, :terms), class: "uk-link-border"
+      |  of service.
