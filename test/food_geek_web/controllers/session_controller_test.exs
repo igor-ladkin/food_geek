@@ -3,7 +3,7 @@ defmodule FoodGeekWeb.SessionControllerTest do
 
   describe "GET /sign-in" do
     setup %{conn: conn} do
-      [path: Routes.session_path(conn, :new, :en)]
+      [path: Routes.session_path(conn, :new)]
     end
 
     test "renders sing-in form", %{conn: conn, path: path} do
@@ -14,7 +14,7 @@ defmodule FoodGeekWeb.SessionControllerTest do
 
   describe "POST /sign-in" do
     setup %{conn: conn} do
-      [path: Routes.session_path(conn, :new, :en)]
+      [path: Routes.session_path(conn, :new)]
     end
 
     test "creates new user session and redirects to home", %{conn: conn, path: path} do
@@ -29,7 +29,7 @@ defmodule FoodGeekWeb.SessionControllerTest do
 
   describe "DELETE /sign-out" do
     setup %{conn: conn} do
-      [path: Routes.session_path(conn, :delete, :en)]
+      [path: Routes.session_path(conn, :delete)]
     end
 
     test "deletes user session and redirects to home", %{conn: conn, path: path} do

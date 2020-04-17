@@ -9,7 +9,7 @@
       li: a[href="/"] Contact
       li
         = link gettext("Sign In"),
-          to: Routes.session_path(@conn, :new, @locale)
+          to: Routes.session_path(@conn, :new)
 
     .uk-margin-medium-top
       a.uk-button.uk-width-1-1.uk-button-primary[href="/"] Sign Up

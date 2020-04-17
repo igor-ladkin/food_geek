@@ -21,7 +21,7 @@ defmodule FoodGeekWeb.ProfileControllerTest do
   end
 
   defp set_path(context) do
-    [path: Routes.my_profile_path(context.conn, :show, :en)]
+    [path: Routes.my_profile_path(context.conn, :show)]
   end
 
   defp set_user(context) do

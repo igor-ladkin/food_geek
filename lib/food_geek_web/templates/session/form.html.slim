@@ -1,4 +1,4 @@
-= form_for :user, Routes.session_path(@conn, :new, @locale), [class: "uk-text-center"], fn f ->
+= form_for :user, Routes.session_path(@conn, :new), [class: "uk-text-center"], fn f ->
   .uk-width-1-1.uk-margin
     = label f, :email, gettext("Email"), class: "uk-form-label"
     = text_input f, :email,
