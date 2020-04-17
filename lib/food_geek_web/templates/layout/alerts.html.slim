@@ -1,9 +1,9 @@
 = if get_flash(@conn, :info) do
-  .uk-alert-success[uk-alert]
+  .uk-alert-success.uk-text-center[uk-alert]
     a.uk-alert-close[uk-close]
     p= get_flash(@conn, :info)
 
 = if get_flash(@conn, :error) do
-  .uk-alert-danger[uk-alert]
+  .uk-alert-danger.uk-text-center[uk-alert]
     a.uk-alert-close[uk-close]
     p= get_flash(@conn, :error)

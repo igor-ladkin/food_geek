@@ -14,7 +14,7 @@ defmodule FoodGeekWeb.SessionControllerTest do
 
   describe "POST /sign-in" do
     setup %{conn: conn} do
-      [path: Routes.session_path(conn, :new)]
+      [path: Routes.session_path(conn, :create)]
     end
 
     test "creates new user session and redirects to home", %{conn: conn, path: path} do
@@ -23,7 +23,7 @@ defmodule FoodGeekWeb.SessionControllerTest do
       conn = post(conn, path, params)
 
       assert get_session(conn, :user) == "john@example.com"
-      assert "/" = redirected_to(conn, 302)
+      assert redirected_to(conn) == "/"
     end
   end
 
@@ -36,7 +36,7 @@ defmodule FoodGeekWeb.SessionControllerTest do
       conn = delete(conn, path)
 
       assert get_session(conn, :user) == nil
-      assert "/" = redirected_to(conn, 302)
+      assert redirected_to(conn) == "/"
     end
   end
 end

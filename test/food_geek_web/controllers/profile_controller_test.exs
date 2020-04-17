@@ -7,7 +7,7 @@ defmodule FoodGeekWeb.ProfileControllerTest do
     test "redirects to home page", %{conn: conn, path: path} do
       conn = get(conn, path)
       assert get_flash(conn, :error) =~ "sign in"
-      assert redirected_to(conn, 302) == "/"
+      assert redirected_to(conn) == "/"
     end
   end
 
