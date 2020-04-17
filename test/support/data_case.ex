@@ -24,6 +24,7 @@ defmodule FoodGeek.DataCase do
       import Ecto.Changeset
       import Ecto.Query
       import FoodGeek.DataCase
+      import FoodGeek.Factory
     end
   end
 
