@@ -10,7 +10,7 @@ defmodule FoodGeek.Accounts do
 
   def get_user!(id), do: Repo.get!(User, id)
 
-  def get_user_by(clauses), do: Repo.get_by!(User, clauses)
+  def get_user_by(clauses), do: Repo.get_by(User, clauses)
 
   def create_user(attrs \\ %{}) do
     %User{}
@@ -30,7 +30,12 @@ defmodule FoodGeek.Accounts do
     |> Repo.update()
   end
 
-  def change_user(%User{} = user \\ %User{}) do
+  def change_user(%User{} = user) do
     User.changeset(user, %{})
+  end
+
+  def authenticate_by(email: email, password: password) do
+    get_user_by(email: email)
+    |> Argon2.check_pass(password)
   end
 end

@@ -99,5 +99,17 @@ defmodule FoodGeek.AccountsTest do
       user = insert!(:user)
       assert %Ecto.Changeset{} = Accounts.change_user(user)
     end
+
+    test "authenticate_by/1 with correct email and password returns an :ok tuple with user" do
+      user = insert!(:user, email: "kobe@nba.com")
+      assert {:ok, ^user} = Accounts.authenticate_by(email: "kobe@nba.com", password: "password")
+    end
+
+    test "authenticate_by/1 with wrong email or password returns an :error tuple with message" do
+      insert!(:user, email: "kobe@nba.com")
+
+      assert {:error, message} =
+               Accounts.authenticate_by(email: "kobe@nba.com", password: "black24mamba")
+    end
   end
 end

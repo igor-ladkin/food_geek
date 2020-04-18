@@ -2,12 +2,13 @@ defmodule FoodGeekWeb.RegistrationController do
   use FoodGeekWeb, :controller
 
   alias FoodGeek.Accounts
+  alias FoodGeek.Accounts.User
   alias FoodGeekWeb.SetCurrentUserPlug
 
   plug :put_layout, "minimal.html"
 
   def new(conn, _params) do
-    changeset = Accounts.change_user()
+    changeset = Accounts.change_user(%User{})
     render(conn, "new.html", changeset: changeset)
   end
 

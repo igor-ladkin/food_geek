@@ -29,6 +29,17 @@ defmodule FoodGeekWeb.SessionControllerTest do
       assert conn.assigns.current_user == user
       assert redirected_to(conn) == "/"
     end
+
+    test "renders errors when wrong credentials are passed", %{conn: conn, path: path} do
+      params = %{"user" => %{"email" => "john@example.com", "password" => "psswrd"}}
+
+      conn = post(conn, path, params)
+
+      refute get_session(conn, :user_id)
+      refute conn.assigns[:current_user]
+      assert html_response(conn, 200) =~ "email/password combination does not exist"
+      assert html_response(conn, 200) =~ "john@example.com"
+    end
   end
 
   describe "DELETE /sign-out" do
