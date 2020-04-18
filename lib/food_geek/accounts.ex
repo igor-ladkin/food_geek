@@ -30,7 +30,7 @@ defmodule FoodGeek.Accounts do
     |> Repo.update()
   end
 
-  def change_user(%User{} = user) do
+  def change_user(%User{} = user \\ %User{}) do
     User.changeset(user, %{})
   end
 end

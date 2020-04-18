@@ -25,7 +25,7 @@ defmodule FoodGeek.Accounts.User do
   def registration_changeset(user, attrs) do
     user
     |> changeset(attrs)
-    |> cast(attrs, [:password, :password_confirmation])
+    |> cast(attrs, [:password, :password_confirmation], empty_values: [])
     |> validate_length(:password, min: 4)
     |> validate_confirmation(:password, required: true)
     |> validate_email_domain()
@@ -39,7 +39,7 @@ defmodule FoodGeek.Accounts.User do
       |> List.last()
 
     if Services.Dns.lookup(domain, :in, :mx) == [] do
-      add_error(changeset, :email, "is not valid")
+      add_error(changeset, :email, "has no corresponding email server")
     else
       changeset
     end

@@ -20,7 +20,7 @@
         p.uk-margin-remove
           = gettext("Or use your email for registration:")
 
-      = render "form.html", conn: @conn
+      = render "form.html", conn: @conn, changeset: @changeset
 
   .uk-padding-large.uk-flex.uk-flex-middle.uk-flex-center.uk-light[class="uk-width-1-2@m" data-uk-height-viewport]
     .uk-background-cover.uk-background-norepeat.uk-background-blend-overlay.uk-background-overlay.uk-border-rounded-large.uk-width-1-1.uk-height-xlarge.uk-flex.uk-flex-middle.uk-flex-center[style="background-image: url(https://source.unsplash.com/n4ymhyyFY7A?w=600&h=700&fit=crop&crop=faces);"]

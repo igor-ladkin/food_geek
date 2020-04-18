@@ -1,10 +1,11 @@
-= form_for :user, Routes.registration_path(@conn, :create), [class: "uk-text-center"], fn f ->
+= form_for @changeset, Routes.registration_path(@conn, :create), [class: "uk-text-center"], fn f ->
   .uk-width-1-1.uk-margin
     = label f, :name, gettext("Full name"), class: "uk-form-label"
     = text_input f, :name,
       class: "uk-input uk-form-large uk-border-pill uk-text-center",
       type: "text",
       placeholder: "Tom Dale"
+    = error_tag f, :name
 
   .uk-width-1-1.uk-margin
     = label f, :email, gettext("Email"), class: "uk-form-label"
@@ -12,6 +13,7 @@
       class: "uk-input uk-form-large uk-border-pill uk-text-center",
       type: "email",
       placeholder: "tom@company.com"
+    = error_tag f, :email
 
   .uk-width-1-1.uk-margin
     = label f, :password, gettext("Password"), class: "uk-form-label"
@@ -19,6 +21,7 @@
       class: "uk-input uk-form-large uk-border-pill uk-text-center",
       type: "password",
       placeholder: gettext("Min 4 characters")
+    = error_tag f, :password
 
   .uk-width-1-1.uk-margin
     = label f, :password_confirmation, gettext("Password confirmation"), class: "uk-form-label"
@@ -26,6 +29,7 @@
       class: "uk-input uk-form-large uk-border-pill uk-text-center",
       type: "password",
       placeholder: gettext("Same as above")
+    = error_tag f, :password_confirmation
 
   .uk-width-1-1.uk-text-center
     = submit gettext("Sign Up"),

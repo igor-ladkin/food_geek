@@ -7,7 +7,8 @@ defmodule FoodGeekWeb.RegistrationController do
   plug :put_layout, "minimal.html"
 
   def new(conn, _params) do
-    render(conn, "new.html")
+    changeset = Accounts.change_user()
+    render(conn, "new.html", changeset: changeset)
   end
 
   def create(conn, %{"user" => user_params}) do
