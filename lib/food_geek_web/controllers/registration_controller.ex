@@ -18,8 +18,9 @@ defmodule FoodGeekWeb.RegistrationController do
         |> put_flash(:info, gettext("Welcome!"))
         |> redirect(to: "/")
 
-      {:error, _changeset} ->
+      {:error, changeset} ->
         conn
+        |> render("new.html", changeset: changeset)
     end
   end
 end

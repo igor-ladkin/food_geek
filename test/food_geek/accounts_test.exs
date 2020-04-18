@@ -66,6 +66,18 @@ defmodule FoodGeek.AccountsTest do
       assert changeset.errors[:password_confirmation]
     end
 
+    test "register_user/1 with email from non-existing mail server returns error changeset" do
+      registration_params = %{
+        email: "mike@badexample.com",
+        name: "Mike Brown",
+        password: "password",
+        password_confirmation: "password"
+      }
+
+      assert {:error, changeset} = Accounts.register_user(registration_params)
+      assert changeset.errors[:email]
+    end
+
     test "update_user/2 with valid data updates the user" do
       user = insert!(:user)
 
