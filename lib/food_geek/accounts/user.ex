@@ -6,6 +6,7 @@ defmodule FoodGeek.Accounts.User do
     field :email, :string
     field :name, :string
     field :password, :string, virtual: true
+    field :password_confirmation, :string, virtual: true
     field :password_hash, :string
 
     timestamps()
@@ -22,7 +23,9 @@ defmodule FoodGeek.Accounts.User do
   def registration_changeset(user, attrs) do
     user
     |> changeset(attrs)
-    |> cast(attrs, [:password])
+    |> cast(attrs, [:password, :password_confirmation])
+    |> validate_length(:password, min: 4)
+    |> validate_confirmation(:password, required: true)
     |> put_pass_hash()
   end
 

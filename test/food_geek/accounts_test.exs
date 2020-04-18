@@ -32,7 +32,8 @@ defmodule FoodGeek.AccountsTest do
       registration_params = %{
         email: "mike@gmail.com",
         name: "Mike Brown",
-        password: "password"
+        password: "password",
+        password_confirmation: "password"
       }
 
       assert {:ok, %User{} = user} = Accounts.register_user(registration_params)
@@ -40,6 +41,29 @@ defmodule FoodGeek.AccountsTest do
       assert user.email == "mike@gmail.com"
       assert user.name == "Mike Brown"
       assert user.password_hash
+    end
+
+    test "register_user/1 without password confirmation returns error changeset" do
+      registration_params = %{
+        email: "mike@gmail.com",
+        name: "Mike Brown",
+        password: "password"
+      }
+
+      assert {:error, changeset} = Accounts.register_user(registration_params)
+      assert changeset.errors[:password_confirmation]
+    end
+
+    test "register_user/1 with wrong password confirmation returns error changeset" do
+      registration_params = %{
+        email: "mike@gmail.com",
+        name: "Mike Brown",
+        password: "password",
+        password_confirmation: "psswrd"
+      }
+
+      assert {:error, changeset} = Accounts.register_user(registration_params)
+      assert changeset.errors[:password_confirmation]
     end
 
     test "update_user/2 with valid data updates the user" do
