@@ -26,6 +26,7 @@ defmodule FoodGeekWeb.ConnCase do
       use Phoenix.ConnTest
       use Plug.Test
       alias FoodGeekWeb.Router.Helpers, as: Routes
+      import FoodGeek.Factory
 
       # The default endpoint for testing
       @endpoint FoodGeekWeb.Endpoint

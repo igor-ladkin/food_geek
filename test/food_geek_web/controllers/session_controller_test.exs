@@ -14,15 +14,19 @@ defmodule FoodGeekWeb.SessionControllerTest do
 
   describe "POST /sign-in" do
     setup %{conn: conn} do
-      [path: Routes.session_path(conn, :create)]
+      [
+        path: Routes.session_path(conn, :create),
+        user: insert!(:user, %{email: "john@example.com"})
+      ]
     end
 
-    test "creates new user session and redirects to home", %{conn: conn, path: path} do
+    test "creates new user session and redirects to home", %{conn: conn, path: path, user: user} do
       params = %{"user" => %{"email" => "john@example.com", "password" => "password"}}
 
       conn = post(conn, path, params)
 
-      assert get_session(conn, :user) == "john@example.com"
+      assert get_session(conn, :user_id) == user.id
+      assert conn.assigns.current_user == user
       assert redirected_to(conn) == "/"
     end
   end
