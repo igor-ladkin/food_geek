@@ -2,6 +2,7 @@ defmodule FoodGeekWeb.RegistrationController do
   use FoodGeekWeb, :controller
 
   alias FoodGeek.Accounts
+  alias FoodGeekWeb.SetCurrentUserPlug
 
   plug :put_layout, "minimal.html"
 
@@ -10,11 +11,11 @@ defmodule FoodGeekWeb.RegistrationController do
   end
 
   def create(conn, %{"user" => user_params}) do
-    case Accounts.create_user(user_params) do
+    case Accounts.register_user(user_params) do
       {:ok, user} ->
         conn
+        |> SetCurrentUserPlug.login(user)
         |> put_flash(:info, gettext("Welcome!"))
-        |> put_session(:user_id, user.id)
         |> redirect(to: "/")
 
       {:error, _changeset} ->

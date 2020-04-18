@@ -28,6 +28,20 @@ defmodule FoodGeek.AccountsTest do
       assert {:error, %Ecto.Changeset{}} = Accounts.create_user(%{email: nil, name: nil})
     end
 
+    test "register_user/1 with valid data creates a user and hashes his password" do
+      registration_params = %{
+        email: "mike@gmail.com",
+        name: "Mike Brown",
+        password: "password"
+      }
+
+      assert {:ok, %User{} = user} = Accounts.register_user(registration_params)
+
+      assert user.email == "mike@gmail.com"
+      assert user.name == "Mike Brown"
+      assert user.password_hash
+    end
+
     test "update_user/2 with valid data updates the user" do
       user = insert!(:user)
 

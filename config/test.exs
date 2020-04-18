@@ -23,3 +23,8 @@ config :food_geek,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+# Config argon2 to speed up tests
+config :argon2_elixir,
+  t_cost: 1,
+  m_cost: 8

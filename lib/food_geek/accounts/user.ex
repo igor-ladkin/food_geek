@@ -17,4 +17,18 @@ defmodule FoodGeek.Accounts.User do
     |> cast(attrs, [:name, :email])
     |> validate_required([:name, :email])
   end
+
+  @doc false
+  def registration_changeset(user, attrs) do
+    user
+    |> changeset(attrs)
+    |> cast(attrs, [:password])
+    |> put_pass_hash()
+  end
+
+  defp put_pass_hash(%Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset) do
+    change(changeset, Argon2.add_hash(password))
+  end
+
+  defp put_pass_hash(changeset), do: changeset
 end
