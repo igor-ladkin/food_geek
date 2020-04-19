@@ -24,7 +24,9 @@ defmodule FoodGeekWeb.ConnCase do
     quote do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
+      use Plug.Test
       alias FoodGeekWeb.Router.Helpers, as: Routes
+      import FoodGeek.Factory
 
       # The default endpoint for testing
       @endpoint FoodGeekWeb.Endpoint

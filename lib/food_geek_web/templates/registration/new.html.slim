@@ -6,7 +6,7 @@
 
       .uk-text-center.uk-margin-medium-bottom
         h1.uk-h2.uk-letter-spacing-small
-          = gettext("Sign In to FoodGeek")
+          = gettext("Create an Account")
 
       .uk-child-width-auto.uk-grid-small.uk-flex.uk-flex-center.uk-margin[data-uk-grid]
         div
@@ -18,19 +18,19 @@
 
       .uk-text-center.uk-margin
         p.uk-margin-remove
-          = gettext("Or use your email account:")
+          = gettext("Or use your email for registration:")
 
       = render "form.html", conn: @conn, changeset: @changeset
 
   .uk-padding-large.uk-flex.uk-flex-middle.uk-flex-center.uk-light[class="uk-width-1-2@m" data-uk-height-viewport]
-    .uk-background-cover.uk-background-norepeat.uk-background-blend-overlay.uk-background-overlay.uk-border-rounded-large.uk-width-1-1.uk-height-xlarge.uk-flex.uk-flex-middle.uk-flex-center[style="background-image: url(https://source.unsplash.com/KPDbRyFOTnE?w=600&h=700&fit=crop&crop=faces);"]
+    .uk-background-cover.uk-background-norepeat.uk-background-blend-overlay.uk-background-overlay.uk-border-rounded-large.uk-width-1-1.uk-height-xlarge.uk-flex.uk-flex-middle.uk-flex-center[style="background-image: url(https://source.unsplash.com/n4ymhyyFY7A?w=600&h=700&fit=crop&crop=faces);"]
       .uk-padding-large
         .uk-text-center
           h2.uk-letter-spacing-small
-            = gettext("Hello There, Join Us")
+            = gettext("Welcome Back")
 
         .uk-margin-top.uk-margin-medium-bottom.uk-text-center
-          p= gettext("Enter your personal details and join the cooking community")
+          p= gettext("Already signed up, enter your details and start cooking your first meal today")
 
         .uk-width-1-1.uk-text-center
-          = link gettext("Sign Up"), to: Routes.registration_path(@conn, :new), class: "uk-button uk-button-primary uk-button-large"
+          = link gettext("Sign In"), to: Routes.session_path(@conn, :new), class: "uk-button uk-button-primary uk-button-large"

@@ -2,10 +2,11 @@ nav.uk-navbar-container.uk-letter-spacing-small
   .uk-container
     .uk-position-z-index[data-uk-navbar]
       .uk-navbar-left
-        a.uk-navbar-item.uk-logo[href="/"] FoodGeek
+        = link "FoodGeek", to: "/", class: "uk-navbar-item uk-logo"
+
         ul.uk-navbar-nav.uk-margin-large-left[class="uk-visible@m"]
-          li: a[href="/"] Home
-          li: a[href="/"] Contact
+          li= link gettext("Home"), to: "/"
+          li= link gettext("Contact"), to: "/"
 
       .uk-navbar-right
         div
@@ -18,11 +19,11 @@ nav.uk-navbar-container.uk-letter-spacing-small
           ul.uk-navbar-nav[class="uk-visible@m"]
             li
               = link @current_user.email,
-                to: Routes.my_profile_path(@conn, :show, @locale)
+                to: Routes.my_profile_path(@conn, :show)
 
           .uk-navbar-item
             = link gettext("Sign Out"),
-              to: Routes.session_path(@conn, :delete, @locale),
+              to: Routes.session_path(@conn, :delete),
               class: "uk-button uk-button-default",
               method: :delete
 
@@ -31,11 +32,11 @@ nav.uk-navbar-container.uk-letter-spacing-small
           ul.uk-navbar-nav[class="uk-visible@m"]
             li
               = link gettext("Sign In"),
-                to: Routes.session_path(@conn, :new, @locale)
+                to: Routes.session_path(@conn, :new)
 
           .uk-navbar-item
             = link gettext("Sign Up"),
-              to: "/",
+              to: Routes.registration_path(@conn, :new),
               class: "uk-button uk-button-primary"
 
         a.uk-navbar-toggle.uk-icon[href="#offcanvas" class="uk-hidden@m" data-uk-toggle]

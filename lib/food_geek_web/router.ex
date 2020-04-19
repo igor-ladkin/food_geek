@@ -10,8 +10,8 @@ defmodule FoodGeekWeb.Router do
 
     plug :basic_auth, Application.compile_env(:food_geek, :auth_config)
 
+    plug FoodGeekWeb.SetLocalePlug
     plug FoodGeekWeb.SetCurrentUserPlug
-    plug SetLocale, gettext: FoodGeekWeb.Gettext, default_locale: "en"
   end
 
   pipeline :api do
@@ -26,20 +26,17 @@ defmodule FoodGeekWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :contact
-  end
-
-  scope "/:locale", FoodGeekWeb do
-    pipe_through :browser
-
-    get "/", PageController, :contact
     get "/terms", PageController, :terms
 
     get "/sign-in", SessionController, :new
     post "/sign-in", SessionController, :create
     delete "/sign-out", SessionController, :delete
+
+    get "/sign-up", RegistrationController, :new
+    post "/sign-up", RegistrationController, :create
   end
 
-  scope "/:locale/my", FoodGeekWeb, as: :my do
+  scope "/my", FoodGeekWeb, as: :my do
     pipe_through [:browser, :authenticate_user]
 
     resources "/profile", ProfileController,

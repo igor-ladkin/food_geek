@@ -1,18 +1,16 @@
 #offcanvas[data-uk-offcanvas="flip: true; overlay: true"]
   .uk-offcanvas-bar
-    a.uk-logo[href="/"] FoodGeek
+    = link "FoodGeek", to: "/", class: "uk-logo"
 
     button.uk-offcanvas-close[type="button" data-uk-close="ratio: 1.2"]
 
     ul.uk-nav.uk-nav-primary.uk-nav-offcanvas.uk-margin-medium-top.uk-text-center
-      li: a[href="/"] Home
-      li: a[href="/"] Contact
-      li
-        = link gettext("Sign In"),
-          to: Routes.session_path(@conn, :new, @locale)
+      li= link gettext("Home"), to: "/"
+      li= link gettext("Contact"), to: "/"
+      li= link gettext("Sign In"), to: Routes.session_path(@conn, :new)
 
     .uk-margin-medium-top
-      a.uk-button.uk-width-1-1.uk-button-primary[href="/"] Sign Up
+      = link gettext("Sign Up"), to: Routes.registration_path(@conn, :new), class: "uk-button uk-width-1-1 uk-button-primary"
 
     .uk-margin-medium-top.uk-text-center
       .uk-child-width-auto.uk-grid-small.uk-flex-center[data-uk-grid]
