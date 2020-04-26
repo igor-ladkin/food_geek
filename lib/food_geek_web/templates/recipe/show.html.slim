@@ -1,0 +1,21 @@
+h1 Show Recipe
+
+ul
+  li
+    strong Title:&nbsp;
+    = @recipe.title
+  li
+    strong Description:&nbsp;
+    = @recipe.description
+  li
+    strong Number of servings:&nbsp;
+    = @recipe.number_of_servings
+  li
+    strong Active time in min:&nbsp;
+    = @recipe.active_time_in_min
+  li
+    strong Total time in min:&nbsp;
+    = @recipe.total_time_in_min
+
+span= link "Edit", to: Routes.recipe_path(@conn, :edit, @recipe)
+span= link "Back", to: Routes.recipe_path(@conn, :index)

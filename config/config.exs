@@ -34,6 +34,8 @@ config :phoenix, :template_engines,
   slime: PhoenixSlime.Engine,
   slimleex: PhoenixSlime.LiveViewEngine
 
+config :phoenix_slime, :use_slim_extension, true
+
 config :slime, :embedded_engines, %{
   markdown: FoodGeekWeb.MarkdownEngine
 }

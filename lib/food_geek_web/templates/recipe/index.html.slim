@@ -1,0 +1,25 @@
+h1 Listing Recipes
+
+table
+  thead
+    tr
+      th Title
+      th Description
+      th Number of servings
+      th Active time in min
+      th Total time in min
+      th
+  tbody
+    = for recipe <- @recipes do
+      tr
+        td= recipe.title
+        td= recipe.description
+        td= recipe.number_of_servings
+        td= recipe.active_time_in_min
+        td= recipe.total_time_in_min
+        td class="text-right"
+          = link "Show", to: Routes.recipe_path(@conn, :show, recipe)
+          = link "Edit", to: Routes.recipe_path(@conn, :edit, recipe)
+          = link "Delete", to: Routes.recipe_path(@conn, :delete, recipe), method: :delete, data: [confirm: "Are you sure?"]
+
+span= link "New Recipe", to: Routes.recipe_path(@conn, :new)

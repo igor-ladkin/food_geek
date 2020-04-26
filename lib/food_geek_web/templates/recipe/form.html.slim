@@ -1,0 +1,21 @@
+= form_for @changeset, @action, fn f ->
+  = if @changeset.action do
+    .alert.alert-danger
+      p Oops, something went wrong! Please check the errors below.
+  = label f, :title, class: "control-label"
+  = text_input f, :title, class: "form-control"
+  = error_tag f, :title
+  = label f, :description, class: "control-label"
+  = textarea f, :description, class: "form-control"
+  = error_tag f, :description
+  = label f, :number_of_servings, class: "control-label"
+  = number_input f, :number_of_servings, class: "form-control"
+  = error_tag f, :number_of_servings
+  = label f, :active_time_in_min, class: "control-label"
+  = number_input f, :active_time_in_min, class: "form-control"
+  = error_tag f, :active_time_in_min
+  = label f, :total_time_in_min, class: "control-label"
+  = number_input f, :total_time_in_min, class: "form-control"
+  = error_tag f, :total_time_in_min
+  div
+    = submit "Submit"

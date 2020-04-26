@@ -34,6 +34,8 @@ defmodule FoodGeekWeb.Router do
 
     get "/sign-up", RegistrationController, :new
     post "/sign-up", RegistrationController, :create
+
+    resources "/recipes", RecipeController
   end
 
   scope "/my", FoodGeekWeb, as: :my do
