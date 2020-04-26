@@ -3,13 +3,37 @@ defmodule FoodGeekWeb.RecipeControllerTest do
 
   alias FoodGeek.Cookbook
 
-  @create_attrs %{active_time_in_min: 42, description: "some description", number_of_servings: 42, title: "some title", total_time_in_min: 42}
-  @update_attrs %{active_time_in_min: 43, description: "some updated description", number_of_servings: 43, title: "some updated title", total_time_in_min: 43}
-  @invalid_attrs %{active_time_in_min: nil, description: nil, number_of_servings: nil, title: nil, total_time_in_min: nil}
+  @create_attrs %{
+    active_time_in_min: 42,
+    description: "some description",
+    number_of_servings: 42,
+    title: "some title",
+    total_time_in_min: 42
+  }
+  @update_attrs %{
+    active_time_in_min: 43,
+    description: "some updated description",
+    number_of_servings: 43,
+    title: "some updated title",
+    total_time_in_min: 43
+  }
+  @invalid_attrs %{
+    active_time_in_min: nil,
+    description: nil,
+    number_of_servings: nil,
+    title: nil,
+    total_time_in_min: nil
+  }
 
   def fixture(:recipe) do
-    {:ok, recipe} = Cookbook.create_recipe(@create_attrs)
+    chef = FoodGeek.Accounts.get_user_by(email: "gordon@hk.com")
+    {:ok, recipe} = Cookbook.create_recipe(chef, @create_attrs)
     recipe
+  end
+
+  setup(context) do
+    chef = FoodGeek.Accounts.get_user_by(email: "gordon@hk.com")
+    [conn: assign(context.conn, :current_user, chef)]
   end
 
   describe "index" do
@@ -28,10 +52,10 @@ defmodule FoodGeekWeb.RecipeControllerTest do
 
   describe "create recipe" do
     test "redirects to show when data is valid", %{conn: conn} do
-      conn = post(conn, Routes.recipe_path(conn, :create), recipe: @create_attrs)
+      resp_conn = post(conn, Routes.recipe_path(conn, :create), recipe: @create_attrs)
 
-      assert %{id: id} = redirected_params(conn)
-      assert redirected_to(conn) == Routes.recipe_path(conn, :show, id)
+      assert %{id: id} = redirected_params(resp_conn)
+      assert redirected_to(resp_conn) == Routes.recipe_path(conn, :show, id)
 
       conn = get(conn, Routes.recipe_path(conn, :show, id))
       assert html_response(conn, 200) =~ "Show Recipe"
@@ -56,8 +80,8 @@ defmodule FoodGeekWeb.RecipeControllerTest do
     setup [:create_recipe]
 
     test "redirects when data is valid", %{conn: conn, recipe: recipe} do
-      conn = put(conn, Routes.recipe_path(conn, :update, recipe), recipe: @update_attrs)
-      assert redirected_to(conn) == Routes.recipe_path(conn, :show, recipe)
+      resp_conn = put(conn, Routes.recipe_path(conn, :update, recipe), recipe: @update_attrs)
+      assert redirected_to(resp_conn) == Routes.recipe_path(conn, :show, recipe)
 
       conn = get(conn, Routes.recipe_path(conn, :show, recipe))
       assert html_response(conn, 200) =~ "some updated description"
@@ -73,8 +97,9 @@ defmodule FoodGeekWeb.RecipeControllerTest do
     setup [:create_recipe]
 
     test "deletes chosen recipe", %{conn: conn, recipe: recipe} do
-      conn = delete(conn, Routes.recipe_path(conn, :delete, recipe))
-      assert redirected_to(conn) == Routes.recipe_path(conn, :index)
+      resp_conn = delete(conn, Routes.recipe_path(conn, :delete, recipe))
+      assert redirected_to(resp_conn) == Routes.recipe_path(conn, :index)
+
       assert_error_sent 404, fn ->
         get(conn, Routes.recipe_path(conn, :show, recipe))
       end

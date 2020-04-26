@@ -8,7 +8,7 @@ defmodule FoodGeek.Accounts do
   alias FoodGeek.Repo
   alias FoodGeek.Accounts.User
 
-  def get_user!(id), do: Repo.get!(User, id)
+  def get_user(id), do: Repo.get(User, id)
 
   def get_user_by(clauses), do: Repo.get_by(User, clauses)
 

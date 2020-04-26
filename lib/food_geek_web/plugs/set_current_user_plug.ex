@@ -8,12 +8,13 @@ defmodule FoodGeekWeb.SetCurrentUserPlug do
   end
 
   def call(conn, _opts) do
+    user_id = get_session(conn, :user_id)
+
     cond do
       conn.assigns[:current_user] ->
         conn
 
-      id = get_session(conn, :user_id) ->
-        user = Accounts.get_user!(id)
+      user = user_id && Accounts.get_user(user_id) ->
         login(conn, user)
 
       true ->

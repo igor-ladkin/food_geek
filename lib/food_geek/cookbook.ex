@@ -4,100 +4,49 @@ defmodule FoodGeek.Cookbook do
   """
 
   import Ecto.Query, warn: false
+  alias Ecto.Changeset
   alias FoodGeek.Repo
 
+  alias FoodGeek.Accounts
   alias FoodGeek.Cookbook.Recipe
 
-  @doc """
-  Returns the list of recipes.
-
-  ## Examples
-
-      iex> list_recipes()
-      [%Recipe{}, ...]
-
-  """
   def list_recipes do
-    Repo.all(Recipe)
+    Recipe.including_chef()
+    |> Repo.all()
   end
 
-  @doc """
-  Gets a single recipe.
+  def list_chef_recipes(%Accounts.User{} = chef) do
+    Recipe.for_chef(chef)
+    |> Repo.all()
+  end
 
-  Raises `Ecto.NoResultsError` if the Recipe does not exist.
+  def get_recipe!(id) do
+    Recipe.including_chef()
+    |> Repo.get!(id)
+  end
 
-  ## Examples
+  def get_chef_recipe!(%Accounts.User{} = chef, id) do
+    Recipe.for_chef(chef)
+    |> Repo.get!(id)
+  end
 
-      iex> get_recipe!(123)
-      %Recipe{}
-
-      iex> get_recipe!(456)
-      ** (Ecto.NoResultsError)
-
-  """
-  def get_recipe!(id), do: Repo.get!(Recipe, id)
-
-  @doc """
-  Creates a recipe.
-
-  ## Examples
-
-      iex> create_recipe(%{field: value})
-      {:ok, %Recipe{}}
-
-      iex> create_recipe(%{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def create_recipe(attrs \\ %{}) do
+  def create_recipe(%Accounts.User{} = chef, attrs \\ %{}) do
     %Recipe{}
     |> Recipe.changeset(attrs)
+    |> Changeset.put_assoc(:chef, chef)
     |> Repo.insert()
   end
 
-  @doc """
-  Updates a recipe.
-
-  ## Examples
-
-      iex> update_recipe(recipe, %{field: new_value})
-      {:ok, %Recipe{}}
-
-      iex> update_recipe(recipe, %{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
   def update_recipe(%Recipe{} = recipe, attrs) do
     recipe
     |> Recipe.changeset(attrs)
     |> Repo.update()
   end
 
-  @doc """
-  Deletes a recipe.
-
-  ## Examples
-
-      iex> delete_recipe(recipe)
-      {:ok, %Recipe{}}
-
-      iex> delete_recipe(recipe)
-      {:error, %Ecto.Changeset{}}
-
-  """
   def delete_recipe(%Recipe{} = recipe) do
     Repo.delete(recipe)
   end
 
-  @doc """
-  Returns an `%Ecto.Changeset{}` for tracking recipe changes.
-
-  ## Examples
-
-      iex> change_recipe(recipe)
-      %Ecto.Changeset{source: %Recipe{}}
-
-  """
   def change_recipe(%Recipe{} = recipe) do
     Recipe.changeset(recipe, %{})
   end

@@ -14,6 +14,16 @@ defmodule FoodGeek.Factory do
     }
   end
 
+  def build(:recipe) do
+    %FoodGeek.Cookbook.Recipe{
+      title: "Some dish",
+      description: "Very tasty food",
+      number_of_servings: 4,
+      active_time_in_min: 30,
+      total_time_in_min: 40
+    }
+  end
+
   # Convenience API
 
   def build(factory_name, attributes) do

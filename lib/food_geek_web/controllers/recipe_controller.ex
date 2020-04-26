@@ -4,18 +4,18 @@ defmodule FoodGeekWeb.RecipeController do
   alias FoodGeek.Cookbook
   alias FoodGeek.Cookbook.Recipe
 
-  def index(conn, _params) do
-    recipes = Cookbook.list_recipes()
+  def index(conn, _params, current_user) do
+    recipes = Cookbook.list_chef_recipes(current_user)
     render(conn, "index.html", recipes: recipes)
   end
 
-  def new(conn, _params) do
+  def new(conn, _params, _current_user) do
     changeset = Cookbook.change_recipe(%Recipe{})
     render(conn, "new.html", changeset: changeset)
   end
 
-  def create(conn, %{"recipe" => recipe_params}) do
-    case Cookbook.create_recipe(recipe_params) do
+  def create(conn, %{"recipe" => recipe_params}, current_user) do
+    case Cookbook.create_recipe(current_user, recipe_params) do
       {:ok, recipe} ->
         conn
         |> put_flash(:info, "Recipe created successfully.")
@@ -26,19 +26,19 @@ defmodule FoodGeekWeb.RecipeController do
     end
   end
 
-  def show(conn, %{"id" => id}) do
-    recipe = Cookbook.get_recipe!(id)
+  def show(conn, %{"id" => id}, current_user) do
+    recipe = Cookbook.get_chef_recipe!(current_user, id)
     render(conn, "show.html", recipe: recipe)
   end
 
-  def edit(conn, %{"id" => id}) do
-    recipe = Cookbook.get_recipe!(id)
+  def edit(conn, %{"id" => id}, current_user) do
+    recipe = Cookbook.get_chef_recipe!(current_user, id)
     changeset = Cookbook.change_recipe(recipe)
     render(conn, "edit.html", recipe: recipe, changeset: changeset)
   end
 
-  def update(conn, %{"id" => id, "recipe" => recipe_params}) do
-    recipe = Cookbook.get_recipe!(id)
+  def update(conn, %{"id" => id, "recipe" => recipe_params}, current_user) do
+    recipe = Cookbook.get_chef_recipe!(current_user, id)
 
     case Cookbook.update_recipe(recipe, recipe_params) do
       {:ok, recipe} ->
@@ -51,12 +51,17 @@ defmodule FoodGeekWeb.RecipeController do
     end
   end
 
-  def delete(conn, %{"id" => id}) do
-    recipe = Cookbook.get_recipe!(id)
+  def delete(conn, %{"id" => id}, current_user) do
+    recipe = Cookbook.get_chef_recipe!(current_user, id)
     {:ok, _recipe} = Cookbook.delete_recipe(recipe)
 
     conn
     |> put_flash(:info, "Recipe deleted successfully.")
     |> redirect(to: Routes.recipe_path(conn, :index))
+  end
+
+  def action(conn, _) do
+    args = [conn, conn.params, conn.assigns.current_user]
+    apply(__MODULE__, action_name(conn), args)
   end
 end
