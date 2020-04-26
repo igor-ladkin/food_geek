@@ -21,7 +21,7 @@ config :food_geek, FoodGeekWeb.Gettext,
   locales: ~w(en ru),
   default_locale: "en"
 
-config :food_geek, dns: :mock
+config :food_geek, dns: FoodGeek.Accounts.Dns.Stub
 
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
