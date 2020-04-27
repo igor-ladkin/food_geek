@@ -1,5 +1,6 @@
-h1 Edit Recipe
+.uk-section.uk-section-default.uk-padding-remove-top
+  .uk-container
+    .uk-flex.uk-flex-column.uk-flex-middle
+      h1.uk-margin-bottom= gettext("Edit Recipe")
 
-= render "form.html", Map.put(assigns, :action, Routes.recipe_path(@conn, :update, @recipe))
-
-span= link "Back", to: Routes.recipe_path(@conn, :index)
+      = render "form.html", Map.put(assigns, :action, Routes.recipe_path(@conn, :update, @recipe))
