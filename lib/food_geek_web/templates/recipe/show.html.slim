@@ -1,21 +1,50 @@
-h1 Show Recipe
+.uk-container
+  div[data-uk-grid]
+    div[class="uk-width-1-2@s"]
+      = img_tag "https://source.unsplash.com/Zh0mYmMBZjQ/600x600", class: "uk-border-rounded-large"
 
-ul
-  li
-    strong Title:&nbsp;
-    = @recipe.title
-  li
-    strong Description:&nbsp;
-    = @recipe.description
-  li
-    strong Number of servings:&nbsp;
-    = @recipe.number_of_servings
-  li
-    strong Active time in min:&nbsp;
-    = @recipe.active_time_in_min
-  li
-    strong Total time in min:&nbsp;
-    = @recipe.total_time_in_min
+    .uk-flex.uk-flex-middle[class="uk-width-expand@s"]
+      div.uk-width-expand
+        h1= @recipe.title
+        p= @recipe.description
 
-span= link "Edit", to: Routes.recipe_path(@conn, :edit, @recipe)
-span= link "Back", to: Routes.recipe_path(@conn, :index)
+        .uk-margin-medium-top.uk-child-width-expand.uk-text-center.uk-grid-divider[data-uk-grid]
+          div
+            span[data-uk-icon="icon: clock; ratio: 1.4"]
+            h5.uk-text-500.uk-margin-small-top.uk-margin-remove-bottom
+              = gettext("Active Time")
+            span.uk-text-small
+              = "#{@recipe.active_time_in_min} mins"
+
+          div
+            span[data-uk-icon="icon: future; ratio: 1.4"]
+            h5.uk-text-500.uk-margin-small-top.uk-margin-remove-bottom
+              = gettext("Total Time")
+            span.uk-text-small
+              = "#{@recipe.total_time_in_min} mins"
+
+          div
+            span[data-uk-icon="icon: users; ratio: 1.4"]
+            h5.uk-text-500.uk-margin-small-top.uk-margin-remove-bottom
+              = gettext("Yield")
+            span.uk-text-small
+              = gettext("Serves %{count}", count: @recipe.number_of_servings)
+
+        hr
+
+        div[data-uk-grid]
+          .uk-text-small[class="uk-width-auto@s"]
+            p.uk-margin-small-top.uk-margin-remove-bottom
+              = gettext("Created by")
+              = link " Gordon Ramsey", to: "#"
+            span.uk-text-muted
+              = ngettext("%{count} recipe", "%{count} recipes", 21)
+
+          .uk-flex.uk-flex-middle[class="uk-width-expand@s uk-flex-right@s"]
+            = link "", to: "#",
+                       class: "uk-icon-link uk-margin-left",
+                       data: [{"uk-icon", "icon: plus-circle; ratio: 1.2"}, {"uk-tooltip", "title: #{gettext("Save Recipe")}"}]
+
+            = link "", to: Routes.recipe_path(@conn, :edit, @recipe),
+                       class: "uk-icon-link uk-margin-left",
+                       data: [{"uk-icon", "icon: pencil; ratio: 1.2"}, {"uk-tooltip", "title: #{gettext("Edit Recipe")}"}]
