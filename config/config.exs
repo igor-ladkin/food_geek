@@ -40,4 +40,18 @@ config :slime, :embedded_engines, %{
   markdown: FoodGeekWeb.MarkdownEngine
 }
 
+config :arc,
+  bucket: "foodgeek",
+  asset_host: "http://127.0.0.1:9000/foodgeek"
+
+config :ex_aws,
+  access_key_id: "minio",
+  secret_access_key: "password",
+  s3: [
+    scheme: "http",
+    host: "127.0.0.1",
+    port: 9000,
+    region: "eu-central-1"
+  ]
+
 import_config "#{Mix.env()}.exs"

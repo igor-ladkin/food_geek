@@ -1,8 +1,11 @@
 defmodule FoodGeek.Cookbook.Recipe do
   use Ecto.Schema
+  use Arc.Ecto.Schema
+
   import Ecto.Changeset
   import Ecto.Query
 
+  alias FoodGeek.Cookbook
   alias FoodGeek.Accounts
 
   schema "recipes" do
@@ -11,6 +14,7 @@ defmodule FoodGeek.Cookbook.Recipe do
     field :number_of_servings, :integer
     field :title, :string
     field :total_time_in_min, :integer
+    field :image, Cookbook.Image.Type
 
     belongs_to :chef, Accounts.User
 
@@ -27,12 +31,14 @@ defmodule FoodGeek.Cookbook.Recipe do
       :active_time_in_min,
       :total_time_in_min
     ])
+    |> cast_attachments(attrs, [:image])
     |> validate_required([
       :title,
       :description,
       :number_of_servings,
       :active_time_in_min,
-      :total_time_in_min
+      :total_time_in_min,
+      :image
     ])
   end
 
