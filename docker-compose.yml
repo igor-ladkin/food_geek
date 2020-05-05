@@ -4,11 +4,30 @@ services:
   postgres:
     image: postgres:12-alpine
     environment:
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
       - 5432:5432
+    volumes:
+      - .pg_data:/var/lib/posgresql/data
     healthcheck:
       test: ["CMD", "pg_isready"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  s3:
+    image: minio/minio
+    environment:
+      MINIO_ACCESS_KEY: minio
+      MINIO_SECRET_KEY: password
+    ports:
+      - 9000:9000
+    volumes:
+      - .s3_data:/data
+    command: server /data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/ready"]
       interval: 10s
       timeout: 5s
       retries: 5

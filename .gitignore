@@ -35,3 +35,9 @@ npm-debug.log
 
 # Ignore directory for elixir language server
 /.elixir_ls
+
+# Ignore data for S3 uploads
+/.s3_data
+
+# Ignore data for postgres
+/.pg_data
