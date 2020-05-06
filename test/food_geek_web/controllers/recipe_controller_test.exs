@@ -8,21 +8,24 @@ defmodule FoodGeekWeb.RecipeControllerTest do
     description: "some description",
     number_of_servings: 42,
     title: "some title",
-    total_time_in_min: 42
+    total_time_in_min: 42,
+    image: %Plug.Upload{path: "test/support/recipe.jpg", filename: "recipe.jpg"}
   }
   @update_attrs %{
     active_time_in_min: 43,
     description: "some updated description",
     number_of_servings: 43,
     title: "some updated title",
-    total_time_in_min: 43
+    total_time_in_min: 43,
+    image: %Plug.Upload{path: "test/support/recipe.jpg", filename: "recipe.jpg"}
   }
   @invalid_attrs %{
     active_time_in_min: nil,
     description: nil,
     number_of_servings: nil,
     title: nil,
-    total_time_in_min: nil
+    total_time_in_min: nil,
+    image: nil
   }
 
   def fixture(:recipe) do
