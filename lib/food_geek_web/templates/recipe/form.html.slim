@@ -32,10 +32,11 @@
       .uk-inline.uk-width-expand
         span.uk-form-icon.uk-form-icon-flip[uk-icon="icon: cloud-upload"]
         = tag :input,
-            type: "text",
-            class: "uk-input uk-form-large",
-            placeholder: f.data.image[:file_name] || gettext("Select file"),
-            disabled: true
+          type: "text",
+          class: "uk-input uk-form-large",
+          value: f.data.image[:file_name],
+          placeholder: f.data.image[:file_name] || gettext("Select file"),
+          disabled: true
 
   .uk-flex.uk-flex-between
     span= link gettext("Back"), to: Routes.recipe_path(@conn, :index)

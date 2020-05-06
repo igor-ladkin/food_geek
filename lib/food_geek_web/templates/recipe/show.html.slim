@@ -36,7 +36,8 @@
           .uk-text-small[class="uk-width-auto@s"]
             p.uk-margin-small-top.uk-margin-remove-bottom
               = gettext("Created by")
-              = link " Gordon Ramsey", to: "#"
+              | &nbsp;
+              = link @recipe.chef.name, to: "#"
             span.uk-text-muted
               = ngettext("%{count} recipe", "%{count} recipes", 21)
 

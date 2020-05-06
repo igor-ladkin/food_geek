@@ -26,7 +26,9 @@ defmodule FoodGeek.Cookbook do
   end
 
   def get_chef_recipe!(%Accounts.User{} = chef, id) do
-    Recipe.for_chef(chef)
+    chef
+    |> Recipe.for_chef()
+    |> Recipe.including_chef()
     |> Repo.get!(id)
   end
 

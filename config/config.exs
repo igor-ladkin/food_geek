@@ -47,6 +47,7 @@ config :arc,
 config :ex_aws,
   access_key_id: "minio",
   secret_access_key: "password",
+  json_codec: Jason,
   s3: [
     scheme: "http",
     host: "127.0.0.1",
