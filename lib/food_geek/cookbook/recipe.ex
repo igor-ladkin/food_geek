@@ -14,6 +14,7 @@ defmodule FoodGeek.Cookbook.Recipe do
     field :number_of_servings, :integer
     field :title, :string
     field :total_time_in_min, :integer
+    field :published_at, :utc_datetime
     field :image, Cookbook.Image.Type
 
     belongs_to :chef, Accounts.User
@@ -40,6 +41,12 @@ defmodule FoodGeek.Cookbook.Recipe do
       :total_time_in_min,
       :image
     ])
+  end
+
+  def publish_changeset(recipe, attrs) do
+    recipe
+    |> cast(attrs, [:published_at])
+    |> validate_required([:published_at])
   end
 
   def including_chef(query \\ __MODULE__) do

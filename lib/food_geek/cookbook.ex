@@ -45,6 +45,16 @@ defmodule FoodGeek.Cookbook do
     |> Repo.update()
   end
 
+  def publish_recipe(%Recipe{published_at: nil} = recipe) do
+    recipe
+    |> Recipe.publish_changeset(%{published_at: DateTime.utc_now()})
+    |> Repo.update()
+  end
+
+  def publish_recipe(%Recipe{}) do
+    {:error, :already_published}
+  end
+
   def delete_recipe(%Recipe{} = recipe) do
     Repo.delete(recipe)
   end

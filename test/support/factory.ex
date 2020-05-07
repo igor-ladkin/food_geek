@@ -20,7 +20,11 @@ defmodule FoodGeek.Factory do
       description: "Very tasty food",
       number_of_servings: 4,
       active_time_in_min: 30,
-      total_time_in_min: 40
+      total_time_in_min: 40,
+      image: %{
+        file_name: "food.jpeg",
+        updated_at: ~N[2020-05-06 08:41:12]
+      }
     }
   end
 

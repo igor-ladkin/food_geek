@@ -94,5 +94,20 @@ defmodule FoodGeek.CookbookTest do
       recipe = recipe_fixture()
       assert %Ecto.Changeset{} = Cookbook.change_recipe(recipe)
     end
+
+    test "publish_recipe/1 publishes the recipe if it was not published before" do
+      recipe = recipe_fixture()
+      assert {:ok, %Recipe{} = recipe} = Cookbook.publish_recipe(recipe)
+      assert recipe.published_at
+    end
+
+    test "publish_recipe/1 returns an error if recipe was published before" do
+      recipe =
+        recipe_fixture()
+        |> Cookbook.publish_recipe()
+        |> elem(1)
+
+      assert {:error, :already_published} = Cookbook.publish_recipe(recipe)
+    end
   end
 end
