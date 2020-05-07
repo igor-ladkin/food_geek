@@ -37,7 +37,7 @@ defmodule FoodGeekWeb.Router do
 
     resources "/recipes", RecipeController do
       resources "/publication", PublicationController,
-        only: [:create],
+        only: [:create, :delete],
         singleton: true
     end
   end

@@ -4,7 +4,10 @@
     canvas[width="600" height="400"]
 
   .uk-card-body.uk-width-expand
-    span.uk-card-badge.uk-label.uk-label-warning= gettext("Draft")
+    = if recipe_published?(@recipe) do
+      span.uk-card-badge.uk-label.uk-label-success= gettext("Published")
+    - else
+      span.uk-card-badge.uk-label.uk-label-warning= gettext("Draft")
 
     h3.uk-card-title= @recipe.title
 

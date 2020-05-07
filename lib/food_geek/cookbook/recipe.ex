@@ -49,6 +49,11 @@ defmodule FoodGeek.Cookbook.Recipe do
     |> validate_required([:published_at])
   end
 
+  def unpublish_changeset(recipe) do
+    recipe
+    |> change(%{published_at: nil})
+  end
+
   def including_chef(query \\ __MODULE__) do
     from q in query,
       preload: [:chef]

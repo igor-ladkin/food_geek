@@ -95,7 +95,7 @@ defmodule FoodGeek.CookbookTest do
       assert %Ecto.Changeset{} = Cookbook.change_recipe(recipe)
     end
 
-    test "publish_recipe/1 publishes the recipe if it was not published before" do
+    test "publish_recipe/1 stores publication timestamp if it was not published before" do
       recipe = recipe_fixture()
       assert {:ok, %Recipe{} = recipe} = Cookbook.publish_recipe(recipe)
       assert recipe.published_at
@@ -108,6 +108,21 @@ defmodule FoodGeek.CookbookTest do
         |> elem(1)
 
       assert {:error, :already_published} = Cookbook.publish_recipe(recipe)
+    end
+
+    test "unpublish_recipe/1 removes publication timestamp if it was published before" do
+      recipe =
+        recipe_fixture()
+        |> Cookbook.publish_recipe()
+        |> elem(1)
+
+      assert {:ok, %Recipe{} = recipe} = Cookbook.unpublish_recipe(recipe)
+      refute recipe.published_at
+    end
+
+    test "publish_recipe/1 returns an error if recipe was not published before" do
+      recipe = recipe_fixture()
+      assert {:error, :not_published} = Cookbook.unpublish_recipe(recipe)
     end
   end
 end

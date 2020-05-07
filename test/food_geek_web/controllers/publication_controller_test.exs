@@ -32,4 +32,22 @@ defmodule FoodGeekWeb.PublicationControllerTest do
       assert redirected_to(resp_conn) == Routes.recipe_path(conn, :show, recipe)
     end
   end
+
+  describe "delete publication" do
+    test "puts back as draft existing published recipe", %{conn: conn, published: recipe} do
+      resp_conn = delete(conn, Routes.recipe_publication_path(conn, :delete, recipe))
+      assert get_flash(resp_conn, :info) =~ "Recipe marked as draft successfully"
+      assert redirected_to(resp_conn) == Routes.recipe_path(conn, :show, recipe)
+
+      conn = get(conn, Routes.recipe_path(conn, :show, recipe))
+      assert html_response(conn, 200) =~ "Publish Recipe"
+      refute html_response(conn, 200) =~ "Unpublish Recipe"
+    end
+
+    test "warns that draft recipe has not been published before", %{conn: conn, draft: recipe} do
+      resp_conn = delete(conn, Routes.recipe_publication_path(conn, :delete, recipe))
+      assert get_flash(resp_conn, :error) =~ "Recipe has not been published yet"
+      assert redirected_to(resp_conn) == Routes.recipe_path(conn, :show, recipe)
+    end
+  end
 end

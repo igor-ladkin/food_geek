@@ -55,6 +55,16 @@ defmodule FoodGeek.Cookbook do
     {:error, :already_published}
   end
 
+  def unpublish_recipe(%Recipe{published_at: nil}) do
+    {:error, :not_published}
+  end
+
+  def unpublish_recipe(%Recipe{} = recipe) do
+    recipe
+    |> Recipe.unpublish_changeset()
+    |> Repo.update()
+  end
+
   def delete_recipe(%Recipe{} = recipe) do
     Repo.delete(recipe)
   end
