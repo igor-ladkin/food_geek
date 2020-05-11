@@ -21,7 +21,7 @@ config :food_geek, FoodGeekWeb.Gettext,
   locales: ~w(en ru),
   default_locale: "en"
 
-config :food_geek, dns: :mock
+config :food_geek, dns: FoodGeek.Accounts.Dns.Stub
 
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
@@ -34,8 +34,25 @@ config :phoenix, :template_engines,
   slime: PhoenixSlime.Engine,
   slimleex: PhoenixSlime.LiveViewEngine
 
+config :phoenix_slime, :use_slim_extension, true
+
 config :slime, :embedded_engines, %{
   markdown: FoodGeekWeb.MarkdownEngine
 }
+
+config :arc,
+  bucket: "foodgeek",
+  asset_host: "http://127.0.0.1:9000/foodgeek"
+
+config :ex_aws,
+  access_key_id: "minio",
+  secret_access_key: "password",
+  json_codec: Jason,
+  s3: [
+    scheme: "http",
+    host: "127.0.0.1",
+    port: 9000,
+    region: "eu-central-1"
+  ]
 
 import_config "#{Mix.env()}.exs"

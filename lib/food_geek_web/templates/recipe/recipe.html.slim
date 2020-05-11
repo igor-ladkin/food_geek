@@ -1,0 +1,26 @@
+.uk-card.uk-card-default[uk-grid]
+  .uk-card-media-left.uk-cover-container[class="uk-width-1-3@m"]
+    = img_tag "https://source.unsplash.com/Zyx6a0ReB18?w=600&h=400&fit=crop&crop=faces", [{"uk-cover", true}]
+    canvas[width="600" height="400"]
+
+  .uk-card-body.uk-width-expand
+    = if recipe_published?(@recipe) do
+      span.uk-card-badge.uk-label.uk-label-success= gettext("Published")
+    - else
+      span.uk-card-badge.uk-label.uk-label-warning= gettext("Draft")
+
+    h3.uk-card-title= @recipe.title
+
+    p= @recipe.description
+
+    .uk-card-footer.uk-flex.uk-flex-around
+      = link gettext("Show"), to: Routes.recipe_path(@conn, :show, @recipe),
+                     class: "uk-button uk-button-small uk-button-default"
+
+      = link gettext("Edit"), to: Routes.recipe_path(@conn, :edit, @recipe),
+                              class: "uk-button uk-button-small uk-button-default"
+
+      = link gettext("Delete"), to: Routes.recipe_path(@conn, :delete, @recipe),
+                                class: "uk-button uk-button-small uk-button-warning",
+                                method: :delete,
+                                data: [confirm: "Are you sure?"]

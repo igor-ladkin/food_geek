@@ -1,0 +1,43 @@
+= form_for @changeset, @action, [class: "uk-width-xlarge", multipart: true], fn f ->
+  .uk-margin
+    = label f, :title, gettext("Title"), class: "uk-form-label"
+    = text_input f, :title, class: "uk-input uk-form-large"
+    = error_tag f, :title
+
+  .uk-margin
+    = label f, :description, gettext("Description"), class: "uk-form-label"
+    = textarea f, :description, class: "uk-textarea uk-form-large"
+    = error_tag f, :description
+
+  .uk-margin
+    = label f, :number_of_servings, gettext("Number of servings"), class: "uk-form-label"
+    = number_input f, :number_of_servings, class: "uk-input uk-form-large"
+    = error_tag f, :number_of_servings
+
+  .uk-margin
+    = label f, :active_time_in_min, gettext("Active time"), class: "uk-form-label"
+    = number_input f, :active_time_in_min, class: "uk-input uk-form-large"
+    = error_tag f, :active_time_in_min
+
+  .uk-margin
+    = label f, :total_time_in_min, gettext("Total time"), class: "uk-form-label"
+    = number_input f, :total_time_in_min, class: "uk-input uk-form-large"
+    = error_tag f, :total_time_in_min
+
+  .uk-margin
+    = label f, :image, gettext("Image"), class: "uk-form-label"
+
+    div[uk-form-custom="target: > * > input:last-child"]
+      = file_input f, :image
+      .uk-inline.uk-width-expand
+        span.uk-form-icon.uk-form-icon-flip[uk-icon="icon: cloud-upload"]
+        = tag :input,
+          type: "text",
+          class: "uk-input uk-form-large",
+          value: f.data.image[:file_name],
+          placeholder: f.data.image[:file_name] || gettext("Select file"),
+          disabled: true
+
+  .uk-flex.uk-flex-between
+    span= link gettext("Back"), to: Routes.recipe_path(@conn, :index)
+    = submit gettext("Submit"), class: "uk-button uk-button-primary"

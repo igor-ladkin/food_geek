@@ -13,7 +13,7 @@ config :food_geek, FoodGeekWeb.Endpoint,
   url: [host: "example.com", port: 80],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
-config :food_geek, dns: :system
+config :food_geek, dns: FoodGeek.Accounts.Dns.InetRes
 
 # Do not print debug messages in production
 config :logger, level: :info

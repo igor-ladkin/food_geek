@@ -1,0 +1,45 @@
+.uk-container
+  div[data-uk-grid]
+    div[class="uk-width-1-2@s"]
+      = img_tag recipe_image_url(@recipe), class: "uk-border-rounded-large"
+
+    .uk-flex.uk-flex-middle[class="uk-width-expand@s"]
+      div.uk-width-expand
+        h1= @recipe.title
+        p= @recipe.description
+
+        .uk-margin-medium-top.uk-child-width-expand.uk-text-center.uk-grid-divider[data-uk-grid]
+          div
+            span[data-uk-icon="icon: clock; ratio: 1.4"]
+            h5.uk-text-500.uk-margin-small-top.uk-margin-remove-bottom
+              = gettext("Active Time")
+            span.uk-text-small
+              = "#{@recipe.active_time_in_min} mins"
+
+          div
+            span[data-uk-icon="icon: future; ratio: 1.4"]
+            h5.uk-text-500.uk-margin-small-top.uk-margin-remove-bottom
+              = gettext("Total Time")
+            span.uk-text-small
+              = "#{@recipe.total_time_in_min} mins"
+
+          div
+            span[data-uk-icon="icon: users; ratio: 1.4"]
+            h5.uk-text-500.uk-margin-small-top.uk-margin-remove-bottom
+              = gettext("Yield")
+            span.uk-text-small
+              = gettext("Serves %{count}", count: @recipe.number_of_servings)
+
+        hr
+
+        div[data-uk-grid]
+          .uk-text-small[class="uk-width-auto@s"]
+            p.uk-margin-small-top.uk-margin-remove-bottom
+              = gettext("Created by")
+              | &nbsp;
+              = link @recipe.chef.name, to: "#"
+            span.uk-text-muted
+              = ngettext("%{count} recipe", "%{count} recipes", 21)
+
+          .uk-flex.uk-flex-middle[class="uk-width-expand@s uk-flex-right@s"]
+            = render "action_links.html", assigns

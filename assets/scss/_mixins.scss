@@ -98,6 +98,10 @@
       border-color: $global-muted-background;
     }
   }
+
+  .uk-form-custom {
+    display: inherit;
+  }
 }
 
 @mixin hook-button-misc() {

@@ -34,6 +34,12 @@ defmodule FoodGeekWeb.Router do
 
     get "/sign-up", RegistrationController, :new
     post "/sign-up", RegistrationController, :create
+
+    resources "/recipes", RecipeController do
+      resources "/publication", PublicationController,
+        only: [:create, :delete],
+        singleton: true
+    end
   end
 
   scope "/my", FoodGeekWeb, as: :my do

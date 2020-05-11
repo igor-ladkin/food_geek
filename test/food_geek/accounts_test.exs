@@ -6,9 +6,9 @@ defmodule FoodGeek.AccountsTest do
   describe "users" do
     alias Accounts.User
 
-    test "get_user!/1 returns the user with given id" do
+    test "get_user/1 returns the user with given id" do
       user = insert!(:user)
-      assert Accounts.get_user!(user.id) == user
+      assert Accounts.get_user(user.id) == user
     end
 
     test "get_user_by/1 returns the user with given search clauses" do
@@ -92,7 +92,7 @@ defmodule FoodGeek.AccountsTest do
       user = insert!(:user)
 
       assert {:error, %Ecto.Changeset{}} = Accounts.update_user(user, %{email: nil})
-      assert user == Accounts.get_user!(user.id)
+      assert user == Accounts.get_user(user.id)
     end
 
     test "change_user/1 returns a user changeset" do

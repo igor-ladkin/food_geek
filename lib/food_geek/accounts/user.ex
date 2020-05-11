@@ -2,7 +2,7 @@ defmodule FoodGeek.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias FoodGeek.Services
+  @dns Application.get_env(:food_geek, :dns, FoodGeek.Accounts.Dns.InetRes)
 
   schema "users" do
     field :email, :string
@@ -39,7 +39,7 @@ defmodule FoodGeek.Accounts.User do
       |> String.split("@", parts: 2)
       |> List.last()
 
-    if Services.Dns.lookup(domain, :in, :mx) == [] do
+    if @dns.lookup(domain, :in, :mx) == [] do
       add_error(changeset, :email, "has no corresponding email server")
     else
       changeset
