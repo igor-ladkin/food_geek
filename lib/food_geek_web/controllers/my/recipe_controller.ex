@@ -1,4 +1,4 @@
-defmodule FoodGeekWeb.RecipeController do
+defmodule FoodGeekWeb.My.RecipeController do
   use FoodGeekWeb, :controller
 
   alias FoodGeek.Cookbook
@@ -19,7 +19,7 @@ defmodule FoodGeekWeb.RecipeController do
       {:ok, recipe} ->
         conn
         |> put_flash(:info, "Recipe created successfully.")
-        |> redirect(to: Routes.recipe_path(conn, :show, recipe))
+        |> redirect(to: Routes.my_recipe_path(conn, :show, recipe))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -44,7 +44,7 @@ defmodule FoodGeekWeb.RecipeController do
       {:ok, recipe} ->
         conn
         |> put_flash(:info, gettext("Recipe updated successfully."))
-        |> redirect(to: Routes.recipe_path(conn, :show, recipe))
+        |> redirect(to: Routes.my_recipe_path(conn, :show, recipe))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", recipe: recipe, changeset: changeset)
@@ -57,7 +57,7 @@ defmodule FoodGeekWeb.RecipeController do
 
     conn
     |> put_flash(:info, gettext("Recipe deleted successfully."))
-    |> redirect(to: Routes.recipe_path(conn, :index))
+    |> redirect(to: Routes.my_recipe_path(conn, :index))
   end
 
   def action(conn, _) do

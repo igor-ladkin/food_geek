@@ -14,14 +14,14 @@
             h5.uk-text-500.uk-margin-small-top.uk-margin-remove-bottom
               = gettext("Active Time")
             span.uk-text-small
-              = "#{@recipe.active_time_in_min} mins"
+              = gettext("%{time} mins", time: @recipe.active_time_in_min)
 
           div
             span[data-uk-icon="icon: future; ratio: 1.4"]
             h5.uk-text-500.uk-margin-small-top.uk-margin-remove-bottom
               = gettext("Total Time")
             span.uk-text-small
-              = "#{@recipe.total_time_in_min} mins"
+              = gettext("%{time} mins", time: @recipe.total_time_in_min)
 
           div
             span[data-uk-icon="icon: users; ratio: 1.4"]

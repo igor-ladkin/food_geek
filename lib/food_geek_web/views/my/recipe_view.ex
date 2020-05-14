@@ -1,4 +1,4 @@
-defmodule FoodGeekWeb.RecipeView do
+defmodule FoodGeekWeb.My.RecipeView do
   use FoodGeekWeb, :view
 
   alias FoodGeek.Cookbook.Recipe

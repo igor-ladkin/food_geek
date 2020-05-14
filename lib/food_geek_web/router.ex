@@ -34,20 +34,20 @@ defmodule FoodGeekWeb.Router do
 
     get "/sign-up", RegistrationController, :new
     post "/sign-up", RegistrationController, :create
+  end
+
+  scope "/my", FoodGeekWeb.My, as: :my do
+    pipe_through [:browser, :authenticate_user]
+
+    resources "/profile", ProfileController,
+      only: [:show],
+      singleton: true
 
     resources "/recipes", RecipeController do
       resources "/publication", PublicationController,
         only: [:create, :delete],
         singleton: true
     end
-  end
-
-  scope "/my", FoodGeekWeb, as: :my do
-    pipe_through [:browser, :authenticate_user]
-
-    resources "/profile", ProfileController,
-      only: [:show],
-      singleton: true
   end
 
   # Other scopes may use custom stacks.

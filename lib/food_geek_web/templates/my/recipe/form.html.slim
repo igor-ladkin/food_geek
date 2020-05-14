@@ -39,5 +39,5 @@
           disabled: true
 
   .uk-flex.uk-flex-between
-    span= link gettext("Back"), to: Routes.recipe_path(@conn, :index)
+    span= link gettext("Back"), to: Routes.my_recipe_path(@conn, :index)
     = submit gettext("Submit"), class: "uk-button uk-button-primary"

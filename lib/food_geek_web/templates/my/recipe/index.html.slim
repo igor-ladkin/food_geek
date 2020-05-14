@@ -8,4 +8,4 @@
           = render "recipe.html", Map.put(assigns, :recipe, recipe)
 
       span
-        = link gettext("New Recipe"), to: Routes.recipe_path(@conn, :new)
+        = link gettext("New Recipe"), to: Routes.my_recipe_path(@conn, :new)

@@ -1,4 +1,4 @@
-defmodule FoodGeekWeb.PublicationController do
+defmodule FoodGeekWeb.My.PublicationController do
   use FoodGeekWeb, :controller
 
   alias FoodGeek.Cookbook
@@ -10,12 +10,12 @@ defmodule FoodGeekWeb.PublicationController do
       {:ok, recipe} ->
         conn
         |> put_flash(:info, gettext("Recipe published successfully."))
-        |> redirect(to: Routes.recipe_path(conn, :show, recipe))
+        |> redirect(to: Routes.my_recipe_path(conn, :show, recipe))
 
       {:error, :already_published} ->
         conn
         |> put_flash(:error, gettext("Recipe is already published."))
-        |> redirect(to: Routes.recipe_path(conn, :show, recipe))
+        |> redirect(to: Routes.my_recipe_path(conn, :show, recipe))
     end
   end
 
@@ -26,12 +26,12 @@ defmodule FoodGeekWeb.PublicationController do
       {:ok, recipe} ->
         conn
         |> put_flash(:info, gettext("Recipe marked as draft successfully."))
-        |> redirect(to: Routes.recipe_path(conn, :show, recipe))
+        |> redirect(to: Routes.my_recipe_path(conn, :show, recipe))
 
       {:error, :not_published} ->
         conn
         |> put_flash(:error, gettext("Recipe has not been published yet."))
-        |> redirect(to: Routes.recipe_path(conn, :show, recipe))
+        |> redirect(to: Routes.my_recipe_path(conn, :show, recipe))
     end
   end
 
