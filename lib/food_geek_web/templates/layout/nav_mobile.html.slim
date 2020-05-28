@@ -6,7 +6,8 @@
 
     ul.uk-nav.uk-nav-primary.uk-nav-offcanvas.uk-margin-medium-top.uk-text-center
       li= link gettext("Home"), to: "/"
-      li= link gettext("Contact"), to: "/"
+      li= link gettext("My Recipes"), to: Routes.my_recipe_path(@conn, :index)
+      li= link gettext("Contact"), to: Routes.page_path(@conn, :contact)
       li= link gettext("Sign In"), to: Routes.session_path(@conn, :new)
 
     .uk-margin-medium-top
