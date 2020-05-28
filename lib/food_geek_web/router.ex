@@ -56,6 +56,6 @@ defmodule FoodGeekWeb.Router do
   scope "/api", FoodGeekWeb.Api, as: :api do
     pipe_through :api
 
-    resources "/recipes", RecipeController, only: [:index]
+    resources "/recipes", RecipeController, only: [:index, :show]
   end
 end

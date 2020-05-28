@@ -19,4 +19,16 @@ defmodule FoodGeekWeb.Api.RecipeControllerTest do
       assert length(body["recipes"]) == 2
     end
   end
+
+  describe "show recipe" do
+    test "returns published recipe based on requested id", %{conn: conn, sushi: sushi} do
+      conn = get(conn, Routes.api_recipe_path(conn, :show, sushi))
+
+      body = json_response(conn, 200)
+      assert body["id"] == sushi.id
+      assert body["title"] == sushi.title
+      assert body["description"] == sushi.description
+      assert body["image_url"] =~ "http://"
+    end
+  end
 end
