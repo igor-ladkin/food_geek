@@ -6,7 +6,8 @@ nav.uk-navbar-container.uk-letter-spacing-small
 
         ul.uk-navbar-nav.uk-margin-large-left[class="uk-visible@m"]
           li= link gettext("Home"), to: "/"
-          li= link gettext("My Recipes"), to: "/my/recipes"
+          li= link gettext("My Recipes"), to: Routes.my_recipe_path(@conn, :index)
+          li= link gettext("Contact"), to: Routes.page_path(@conn, :contact)
 
       .uk-navbar-right
         div
