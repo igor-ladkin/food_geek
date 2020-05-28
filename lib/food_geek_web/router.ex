@@ -53,8 +53,9 @@ defmodule FoodGeekWeb.Router do
     end
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", FoodGeekWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", FoodGeekWeb.Api, as: :api do
+    pipe_through :api
+
+    resources "/recipes", RecipeController, only: [:index]
+  end
 end
