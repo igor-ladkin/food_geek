@@ -63,4 +63,9 @@ defmodule FoodGeek.Cookbook.Recipe do
     from q in query,
       where: q.chef_id == ^chef_id
   end
+
+  def published(query \\ __MODULE__) do
+    from q in query,
+      where: not is_nil(q.published_at)
+  end
 end
