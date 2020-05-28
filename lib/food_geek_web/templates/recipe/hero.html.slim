@@ -1,0 +1,16 @@
+.uk-container
+  .uk-border-rounded-large.uk-background-top-center.uk-background-cover.uk-background-norepeat.uk-light.uk-inline.uk-overflow-hidden.uk-width-1-1[style="background-image: url(https://source.unsplash.com/E6HjQaB7UEA?w=1200&h=438&fit=crop&crop=faces);"]
+    .uk-position-cover.uk-header-overlay
+    .uk-position-relative[data-uk-grid]
+      .uk-flex.uk-flex-middle[class="uk-width-1-2@m"]
+        .uk-padding-large.uk-padding-remove-right
+          h1.uk-heading-small.uk-margin-remove-top
+            = gettext("Choose from thousands of recipes")
+          p.uk-text-secondary
+            = gettext("Appropriately integrate technically sound value with scalable infomediaries negotiate sustainable strategic theme areas")
+
+          = link to: Routes.registration_path(@conn, :new), class: "uk-text-secondary uk-text-600 uk-text-small hvr-forward" do
+              = gettext("Sign up today")
+              span.uk-margin-small-left[data-uk-icon="arrow-right"]
+
+      div[class="uk-width-expand@m"]

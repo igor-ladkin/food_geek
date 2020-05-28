@@ -1,0 +1,24 @@
+.uk-card
+  .uk-card-media-top.uk-inline.uk-light
+    = img_tag recipe_image_url(@recipe),
+              class: "k-border-rounded-medium",
+              alt: @recipe.title
+
+    .uk-position-cover.uk-card-overlay.uk-border-rounded-medium
+    .uk-position-xsmall.uk-position-top-right
+      a.uk-icon-button.uk-like.uk-position-z-index.uk-position-relative[href="#" data-uk-icon="heart"]
+
+  div
+    h3.uk-card-title.uk-text-500.uk-margin-small-bottom.uk-margin-top
+      = @recipe.title
+    .uk-text-xsmall.uk-text-muted[data-uk-grid]
+      .uk-width-auto.uk-flex.uk-flex-middle
+        span.uk-rating-filled[data-uk-icon="icon: star; ratio: 0.7"]
+        span.uk-margin-xsmall-left
+          | 5.0
+        span
+          | (73)
+      .uk-width-expand.uk-text-right
+        = gettext("by %{chef_name}", chef_name: @recipe.chef.name)
+
+  = link "", to: Routes.recipe_path(@conn, :show, @recipe), class: "uk-position-cover"

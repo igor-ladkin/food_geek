@@ -1,0 +1,16 @@
+= render "hero.html", assigns
+
+.uk-section.uk-section-default
+  .uk-container
+    div[data-uk-grid]
+      = render "sidenav.html", assigns
+
+      div[class="uk-width-expand@m"]
+        div[data-uk-grid]
+          = render "searchbar.html", assigns
+
+        .uk-child-width-1-2[class="uk-child-width-1-3@s" data-uk-grid]
+          = for recipe <- @recipes do
+            = render "recipe_card.html", recipe: recipe, conn: @conn
+
+        = render "pagination.html", assigns

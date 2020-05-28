@@ -1,0 +1,47 @@
+.sticky-container[class="uk-width-1-4@m"]
+  div[data-uk-sticky="offset: 100; bottom: true; media: @m;"]
+    h2= gettext("Recipes")
+
+    ul.uk-nav-default.uk-nav-parent-icon.uk-nav-filter.uk-margin-medium-top[data-uk-nav]
+      li.uk-parent.uk-open
+        = link gettext("Dish Type"), to: "#"
+        ul.uk-nav-sub
+          li= link gettext("Appetizers & Snacks"), to: "#"
+          li= link gettext("Bread Recipes"), to: "#"
+          li= link gettext("Cake Recipes"), to: "#"
+          li= link gettext("Candy and Fudge"), to: "#"
+          li= link gettext("Casserole Recipes"), to: "#"
+          li= link gettext("Christmas Cookies"), to: "#"
+          li= link gettext("Cocktail Recipes"), to: "#"
+          li= link gettext("Main Dishes"), to: "#"
+          li= link gettext("Pasta Recipes"), to: "#"
+          li= link gettext("Pie Recipes"), to: "#"
+          li= link gettext("Sandwiches"), to: "#"
+      li.uk-parent
+        = link gettext("Meal Type"), to: "#"
+        ul.uk-nav-sub
+          li= link gettext("Breakfast and Brunch"), to: "#"
+          li= link gettext("Desserts"), to: "#"
+          li= link gettext("Dinners"), to: "#"
+          li= link gettext("Lunch"), to: "#"
+      li.uk-parent
+        = link gettext("Diet and Health"), to: "#"
+        ul.uk-nav-sub
+          li= link gettext("Diabetic"), to: "#"
+          li= link gettext("Gluten Free"), to: "#"
+          li= link gettext("High Fiber Recipes"), to: "#"
+          li= link gettext("Low Calorie"), to: "#"
+      li.uk-parent
+        = link gettext("World Cuisine"), to: "#"
+        ul.uk-nav-sub
+          li= link gettext("Chinese"), to: "#"
+          li= link gettext("Indian"), to: "#"
+          li= link gettext("Italian"), to: "#"
+          li= link gettext("Mexican"), to: "#"
+      li.uk-parent
+        = link gettext("Seasonal"), to: "#"
+        ul.uk-nav-sub
+          li= link gettext("Baby Shower"), to: "#"
+          li= link gettext("Birthday"), to: "#"
+          li= link gettext("Christmas"), to: "#"
+          li= link gettext("Halloween"), to: "#"

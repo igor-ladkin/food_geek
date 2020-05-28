@@ -25,7 +25,10 @@ defmodule FoodGeekWeb.Router do
   scope "/", FoodGeekWeb do
     pipe_through :browser
 
-    get "/", PageController, :contact
+    get "/", RecipeController, :index
+    get "/:id", RecipeController, :show
+
+    get "/contact", PageController, :contact
     get "/terms", PageController, :terms
 
     get "/sign-in", SessionController, :new
