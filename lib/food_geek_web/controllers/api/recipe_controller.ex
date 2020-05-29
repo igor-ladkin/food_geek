@@ -7,7 +7,7 @@ defmodule FoodGeekWeb.Api.RecipeController do
   swagger_path :index do
     get("/api/recipes")
     description("List published recipes")
-    response(200, "Success", Schema.ref(:Recipes))
+    response(200, "Success", Schema.ref(:RecipesCollection))
   end
 
   def index(conn, _params) do
@@ -39,25 +39,24 @@ defmodule FoodGeekWeb.Api.RecipeController do
           description("Published recipe from chef's cookbook")
 
           properties do
-            id(:string, "Unique identifier", required: true)
+            id(:integer, "Unique identifier", required: true)
             title(:string, "Title", required: true)
             description(:string, "Description", required: true)
             image_url(:string, "Image URL", required: true)
           end
 
           example(%{
-            id: "123",
+            id: 123,
             title: "Sake Sushi",
             description: "Fine slice of salmon on a delicious rice ball",
             image_url: "https://source.unsplash.com/wmPDe9OnXT4"
           })
         end,
-      Recipes:
+      RecipesCollection:
         swagger_schema do
-          title("Recipes")
+          title("RecipesCollection")
           description("A collection of Recipes")
-          type(:array)
-          items(Schema.ref(:Recipe))
+          property(:recipes, Schema.array(:Recipe))
         end
     }
   end
