@@ -3,7 +3,7 @@ defmodule FoodGeekWeb.SignUpTest do
 
   setup do
     chef = FoodGeek.Accounts.get_user_by(email: "jiro@sushi.com")
-    published_at = DateTime.utc_now() |> DateTime.truncate(:second)
+    published_at = TestHelper.truncated_date_time()
     sushi = insert!(:recipe, title: "Maguro Nigiri", chef: chef, published_at: published_at)
 
     [sushi: sushi]
