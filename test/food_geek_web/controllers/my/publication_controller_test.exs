@@ -6,7 +6,7 @@ defmodule FoodGeekWeb.My.PublicationControllerTest do
 
   setup %{conn: conn} do
     chef = conn.assigns.current_user
-    published_at = DateTime.utc_now() |> DateTime.truncate(:second)
+    published_at = TestHelper.truncated_date_time()
 
     draft = insert!(:recipe, chef: chef)
     published = insert!(:recipe, chef: chef, published_at: published_at)
