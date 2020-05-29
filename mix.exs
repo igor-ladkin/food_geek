@@ -62,7 +62,8 @@ defmodule FoodGeek.MixProject do
       {:sweet_xml, "~> 0.6"},
       {:phoenix_swagger, "~> 0.8"},
       {:ex_json_schema, "~> 0.5"},
-      {:excoveralls, "~> 0.10", only: :test}
+      {:excoveralls, "~> 0.10", only: :test},
+      {:phoenix_integration, "~> 0.8", only: :test}
     ]
   end
 
