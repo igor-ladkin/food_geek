@@ -58,4 +58,19 @@ defmodule FoodGeekWeb.Router do
 
     resources "/recipes", RecipeController, only: [:index, :show]
   end
+
+  scope "/docs" do
+    forward "/swagger", PhoenixSwagger.Plug.SwaggerUI,
+      otp_app: :food_geek,
+      swagger_file: "swagger.json"
+  end
+
+  def swagger_info do
+    %{
+      info: %{
+        version: "0.0.1",
+        title: "FoodGeek"
+      }
+    }
+  end
 end

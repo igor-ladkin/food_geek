@@ -23,6 +23,14 @@ config :food_geek, FoodGeekWeb.Gettext,
 
 config :food_geek, dns: FoodGeek.Accounts.Dns.Stub
 
+config :food_geek, :phoenix_swagger,
+  swagger_files: %{
+    "priv/static/swagger.json" => [
+      router: FoodGeekWeb.Router,
+      endpoint: FoodGeekWeb.Endpoint
+    ]
+  }
+
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
@@ -54,5 +62,7 @@ config :ex_aws,
     port: 9000,
     region: "eu-central-1"
   ]
+
+config :phoenix_swagger, json_library: Jason
 
 import_config "#{Mix.env()}.exs"
