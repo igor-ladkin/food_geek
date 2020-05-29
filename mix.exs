@@ -8,7 +8,7 @@ defmodule FoodGeek.MixProject do
       elixir: "~> 1.10",
       elixirc_paths: elixirc_paths(Mix.env()),
       elixirc_options: [warnings_as_errors: true],
-      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
+      compilers: [:phoenix, :gettext] ++ Mix.compilers() ++ [:phoenix_swagger],
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps(),
@@ -60,6 +60,8 @@ defmodule FoodGeek.MixProject do
       {:ex_aws_s3, "~> 2.0"},
       {:hackney, "~> 1.6"},
       {:sweet_xml, "~> 0.6"},
+      {:phoenix_swagger, "~> 0.8"},
+      {:ex_json_schema, "~> 0.5"},
       {:excoveralls, "~> 0.10", only: :test}
     ]
   end
