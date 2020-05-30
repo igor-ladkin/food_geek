@@ -4,7 +4,7 @@ body
   main.container[role="main"]
     = render "alerts.html", assigns
 
-    = render @view_module, @view_template, assigns
+    = @inner_content
 
   = render "nav_mobile.html", assigns
 

@@ -10,6 +10,8 @@ defmodule FoodGeek.Application do
     children = [
       # Start the Ecto repository
       FoodGeek.Repo,
+      # Start the PubSub system
+      {Phoenix.PubSub, name: MyApp.PubSub},
       # Start the endpoint when the application starts
       FoodGeekWeb.Endpoint
       # Starts a worker by calling: FoodGeek.Worker.start_link(arg)

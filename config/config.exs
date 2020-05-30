@@ -14,7 +14,7 @@ config :food_geek, FoodGeekWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "7byhVtsUzB/wKWduEqtTuvYafg5npCj3PeeUfk1mJUqqcd1wnY1gHnpRubu4ovsn",
   render_errors: [view: FoodGeekWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: FoodGeek.PubSub, adapter: Phoenix.PubSub.PG2],
+  pubsub_server: MyApp.PubSub,
   live_view: [signing_salt: "2zbjpOFh"]
 
 config :food_geek, FoodGeekWeb.Gettext,

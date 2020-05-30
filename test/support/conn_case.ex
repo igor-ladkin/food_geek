@@ -23,8 +23,8 @@ defmodule FoodGeekWeb.ConnCase do
   using do
     quote do
       # Import conveniences for testing with connections
-      use Phoenix.ConnTest
-      use Plug.Test
+      import Plug.Conn
+      import Phoenix.ConnTest
       alias FoodGeekWeb.Router.Helpers, as: Routes
       alias FoodGeekWeb.TestHelper
       import FoodGeek.Factory
