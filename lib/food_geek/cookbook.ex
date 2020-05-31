@@ -10,8 +10,9 @@ defmodule FoodGeek.Cookbook do
   alias FoodGeek.Accounts
   alias FoodGeek.Cookbook.Recipe
 
-  def list_recipes do
-    Recipe.including_chef()
+  def list_recipes(query \\ Recipe) do
+    query
+    |> Recipe.including_chef()
     |> Repo.all()
   end
 
@@ -20,9 +21,20 @@ defmodule FoodGeek.Cookbook do
     |> Repo.all()
   end
 
-  def get_recipe!(id) do
-    Recipe.including_chef()
+  def list_published_recipes do
+    Recipe.published()
+    |> list_recipes()
+  end
+
+  def get_recipe!(query \\ Recipe, id) do
+    query
+    |> Recipe.including_chef()
     |> Repo.get!(id)
+  end
+
+  def get_published_recipe!(id) do
+    Recipe.published()
+    |> get_recipe!(id)
   end
 
   def get_chef_recipe!(%Accounts.User{} = chef, id) do

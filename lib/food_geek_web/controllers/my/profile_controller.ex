@@ -1,4 +1,4 @@
-defmodule FoodGeekWeb.ProfileController do
+defmodule FoodGeekWeb.My.ProfileController do
   use FoodGeekWeb, :controller
 
   def show(conn, _params) do

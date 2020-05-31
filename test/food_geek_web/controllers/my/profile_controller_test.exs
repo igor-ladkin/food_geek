@@ -1,4 +1,4 @@
-defmodule FoodGeekWeb.ProfileControllerTest do
+defmodule FoodGeekWeb.My.ProfileControllerTest do
   use FoodGeekWeb.ConnCase
 
   describe "GET /my/profile when the user is not authenticated" do
