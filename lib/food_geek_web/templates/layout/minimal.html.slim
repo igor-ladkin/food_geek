@@ -1,11 +1,6 @@
-= render "head.html", assigns
+main.container[role="main"]
+  = render "alerts.html", assigns
 
-body
-  main.container[role="main"]
-    = render "alerts.html", assigns
+  = @inner_content
 
-    = @inner_content
-
-  = render "nav_mobile.html", assigns
-
-  script[type="text/javascript" src="#{ Routes.static_path(@conn, "/js/app.js") }"]
+= render "nav_mobile.html", assigns
