@@ -1,5 +1,6 @@
 defmodule FoodGeekWeb.My.RecipeControllerTest do
   use FoodGeekWeb.ConnCase
+  use FoodGeekWeb.AuthorizedCase
 
   alias FoodGeek.Cookbook
 
@@ -32,11 +33,6 @@ defmodule FoodGeekWeb.My.RecipeControllerTest do
     chef = FoodGeek.Accounts.get_user_by(email: "gordon@hk.com")
     {:ok, recipe} = Cookbook.create_recipe(chef, @create_attrs)
     recipe
-  end
-
-  setup(context) do
-    chef = FoodGeek.Accounts.get_user_by(email: "gordon@hk.com")
-    [conn: assign(context.conn, :current_user, chef)]
   end
 
   describe "index" do

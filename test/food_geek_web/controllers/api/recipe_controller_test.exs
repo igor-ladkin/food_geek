@@ -3,7 +3,7 @@ defmodule FoodGeekWeb.Api.RecipeControllerTest do
   use PhoenixSwagger.SchemaTest, "priv/static/swagger.json"
 
   setup do
-    published_at = DateTime.utc_now() |> DateTime.truncate(:second)
+    published_at = TestHelper.truncated_date_time()
 
     sushi = insert!(:recipe, title: "Maguro Nigiri", published_at: published_at)
     burger = insert!(:recipe, title: "Double Cheeseburger", published_at: published_at)

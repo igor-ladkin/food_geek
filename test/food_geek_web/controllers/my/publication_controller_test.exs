@@ -1,15 +1,18 @@
 defmodule FoodGeekWeb.My.PublicationControllerTest do
   use FoodGeekWeb.ConnCase
+  use FoodGeekWeb.AuthorizedCase
 
-  setup(context) do
-    chef = FoodGeek.Accounts.get_user_by(email: "gordon@hk.com")
-    published_at = DateTime.utc_now() |> DateTime.truncate(:second)
+  @moduledoc logged_as: "gordon@hk.com"
+
+  setup %{conn: conn} do
+    chef = conn.assigns.current_user
+    published_at = TestHelper.truncated_date_time()
 
     draft = insert!(:recipe, chef: chef)
     published = insert!(:recipe, chef: chef, published_at: published_at)
 
     [
-      conn: assign(context.conn, :current_user, chef),
+      conn: assign(conn, :current_user, chef),
       draft: draft,
       published: published
     ]
